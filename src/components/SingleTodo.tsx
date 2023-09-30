@@ -17,7 +17,7 @@ type SingleToDoProps = {
 }
 
 
-const SingleTodo = ({ todoContaintArr, ele, updateTodo, deleteTodo, index, downTodo, upTodo, makeFavirote , makeUnFavirote }: SingleToDoProps) => {
+const SingleTodo = ({ todoContaintArr, ele, updateTodo, deleteTodo, index, downTodo, upTodo, makeFavirote, makeUnFavirote }: SingleToDoProps) => {
 
 
     const [readyToDelete, setReadyToDelete] = useState(ele.isDeletable);
@@ -49,8 +49,8 @@ const SingleTodo = ({ todoContaintArr, ele, updateTodo, deleteTodo, index, downT
                     <span className={` w-2 h-2 ${randomColorOfTailwind()} rounded-full`}></span>
                     <p className=' capitalize'>{ele.heading}</p>
                     <button
-                        className={`${ele.isFav ? 'text-yellow-400 hover:scale-110 ' : ` text-slate-400 hover:text-yellow-400 hover:scale-110`}  transition-all`}
-                        onClick={ ()=>{ (ele.isFav)? makeUnFavirote(ele) : makeFavirote(ele)  }}
+                        className={`${ele.isFav ? 'text-yellow-400 hover:scale-110 ' : ` text-slate-400 hover:text-teal-300 hover:scale-110`}  transition-all`}
+                        onClick={() => { (ele.isFav) ? makeUnFavirote(ele) : makeFavirote(ele) }}
                     ><i className="ri-star-fill"></i></button>
                 </div>
                 <p className={`text-left ${(ele.isDeletable || readyToDelete) && " line-through"}`}>{ele.content}</p>

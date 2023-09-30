@@ -1,4 +1,4 @@
-import { useState , useEffect } from 'react'
+import { useState, useEffect } from 'react'
 
 import '../index.css'
 import ModalForInpt from './ModalForInpt'
@@ -11,7 +11,7 @@ export interface TTodoObj {
   heading: string;
   content: string;
   isDeletable?: boolean;
-  isFav ?: boolean;
+  isFav?: boolean;
 }
 
 
@@ -61,7 +61,7 @@ const MainTodo = () => {
 
   function addNewTodo(obj: TInputOfTodo) {
 
-    setTodoArr([...todoArr, { ...obj, id: `${todoArr.length + 1}`, isDeletable: false ,  isFav : false }])
+    setTodoArr([...todoArr, { ...obj, id: `${todoArr.length + 1}`, isDeletable: false, isFav: false }])
 
   }
 
@@ -151,14 +151,14 @@ const MainTodo = () => {
     console.log(todoArr)
   }
 
-  function allDeleteTodo(){
+  function allDeleteTodo() {
 
     // // We need clean localhost ---->
     localStorage.removeItem("todoData2023")
     setTodoArr([])
   }
 
-  function makeFavirote(obj : TInputOfTodo){
+  function makeFavirote(obj: TInputOfTodo) {
 
     // alert("Clicked")
     // console.log(obj)
@@ -166,25 +166,25 @@ const MainTodo = () => {
 
     let arr = [...todoArr]
 
-    let index = arr.findIndex( (el)=>{return el.id === obj.id} )     // // // Finded element
+    let index = arr.findIndex((el) => { return el.id === obj.id })     // // // Finded element
 
-    arr.splice( index , 1  )    // // // Remove original or previous then added new with is fav true.
+    arr.splice(index, 1)    // // // Remove original or previous then added new with is fav true.
 
-    arr.unshift({...obj , isFav : true})
+    arr.unshift({ ...obj, isFav: true })
 
     setTodoArr(arr)   // // // Now set the arr.
 
   }
 
-  function makeUnFavirote(obj :TInputOfTodo){
+  function makeUnFavirote(obj: TInputOfTodo) {
 
     let arr = [...todoArr]
 
-    let index = arr.findIndex( (el)=>{return el.id === obj.id} )     // // // Finded element
+    let index = arr.findIndex((el) => { return el.id === obj.id })     // // // Finded element
 
-    arr.splice( index , 1  )    // // // Remove original or previous then added new with is fav true.
+    arr.splice(index, 1)    // // // Remove original or previous then added new with is fav true.
 
-    arr.push({...obj , isFav : false})
+    arr.push({ ...obj, isFav: false })
 
     setTodoArr(arr)   // // // Now set the arr.
 
@@ -195,27 +195,27 @@ const MainTodo = () => {
 
   // // // We can use tow useEffect in our project.
 
-  useEffect( ()=>{
-    if(todoArr.length !== 0){
-      localStorage.setItem("todoData2023" , JSON.stringify(todoArr))
+  useEffect(() => {
+    if (todoArr.length !== 0) {
+      localStorage.setItem("todoData2023", JSON.stringify(todoArr))
     }
-  } , [todoArr])
+  }, [todoArr])
 
 
-  useEffect( ()=>{
+  useEffect(() => {
 
     let getTodoData = localStorage.getItem("todoData2023")
     // console.log(getTodoData)
 
-    if(getTodoData){
+    if (getTodoData) {
       setTodoArr(JSON.parse(getTodoData))
-    }else{
+    } else {
       setTodoArr([])
     }
 
-  } , [])
+  }, [])
 
-  
+
 
 
 
@@ -247,7 +247,7 @@ const MainTodo = () => {
       ></TodoBody>
 
 
-        <span className=' font-mono fixed bottom-1 right-1'>By: Ashish Kuldeep</span>
+      <span className=' font-mono fixed bottom-1 right-1'>By: Ashish Kuldeep</span>
     </>
   )
 }
