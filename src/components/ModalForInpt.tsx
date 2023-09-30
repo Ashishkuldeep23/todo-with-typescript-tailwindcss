@@ -62,10 +62,10 @@ const ModalForInpt = ({ setModalVisiable, modalVisiable, addNewTodo, updatingTod
 
 
   return (
-    <div className={` h-screen w-screen border  bg-blue-300 absolute z-20 justify-center items-center ${modalVisiable ? "flex" : 'hidden'} `} >
+    <div className={` h-full w-screen border  bg-blue-300 absolute z-20 justify-center items-center ${modalVisiable ? "flex" : 'hidden'} `} >
 
       <div className=' w-11/12 md:w-1/4 p-2 bg-orange-300 border border-red-500 rounded-2xl flex flex-col text-center py-8 relative'>
-        <button className=' absolute right-3 top-2 border px-1 bg-red-500 hover:bg-red-700 rounded-lg' onClick={() => { setModalVisiable(false) }}>X</button>
+        <button className=' absolute right-3 top-2 border px-2 bg-red-500 hover:bg-red-700 rounded-lg' onClick={() => { setModalVisiable(false) }}>X</button>
         <h2 className='text-2xl font-bold underline'>{updatingTodo ? "Update" : "Create"} Todo</h2>
 
         <label
@@ -73,10 +73,11 @@ const ModalForInpt = ({ setModalVisiable, modalVisiable, addNewTodo, updatingTod
           className='text-left mt-4'
         >TODO Heading ⬇️</label>
         <input
+          className='rounded focus:bg-green-200'
           type="text" id='heading' name="heading"
           onChange={onChangeHandler}
           value={input.heading}
-          placeholder='TODO heading'
+          placeholder='TODO Heading'
         />
 
         <label
@@ -84,10 +85,11 @@ const ModalForInpt = ({ setModalVisiable, modalVisiable, addNewTodo, updatingTod
           className='text-left  mt-4'
         >TODO Heading ⬇️</label>
         <textarea
+          className='rounded focus:bg-green-200'
           name="content"
           onChange={onChangeHandler}
           id="content"
-          placeholder='TODO Body'
+          placeholder='TODO Content'
           value={input.content}
           rows={5}
         ></textarea>

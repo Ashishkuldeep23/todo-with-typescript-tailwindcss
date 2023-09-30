@@ -6,30 +6,58 @@ import { TTodoObj } from './MainTodo'
 
 type SingleToDoProps = {
     ele: TTodoObj;
-    index : number ;
+    index: number;
     todoContaintArr: TTodoObj[];
     updateTodo(obj: TTodoObj): void;
     deleteTodo(obj: TTodoObj): void;
     upTodo(obj: TTodoObj): void;
     downTodo(obj: TTodoObj): void;
+    makeFavirote(obj: TTodoObj): void;
+    makeUnFavirote(obj: TTodoObj): void;
 }
 
 
-const SingleTodo = ({todoContaintArr , ele, updateTodo, deleteTodo , index , downTodo , upTodo }: SingleToDoProps) => {
+const SingleTodo = ({ todoContaintArr, ele, updateTodo, deleteTodo, index, downTodo, upTodo, makeFavirote , makeUnFavirote }: SingleToDoProps) => {
 
 
-    const [readyToDelete, setReadyToDelete] = useState(ele.isDeletable)
+    const [readyToDelete, setReadyToDelete] = useState(ele.isDeletable);
+
+    function randomColorOfTailwind() {
+
+        let colors = [
+            "bg-green-400",
+            "bg-red-400",
+            "bg-yellow-400",
+            "bg-blue-400",
+            "bg-slate-400",
+            "bg-orange-400",
+            "bg-lime-400",
+            "bg-emerald-400",
+            "bg-indigo-400",
+        ]
+
+        return colors[Math.floor(Math.random() * colors.length)]
+    }
+
 
     return (
         <>
 
-            <div key={ele.id} className='my-4 py-1 px-2 border rounded-3xl shadow-lg bg-sky-50 hover:scale-105 hover:bg-white transition-all'>
-                <h3 className={` font-bold text-lg ${readyToDelete && " line-through"}`} >{ele.heading}</h3>
-                <p className={`text-left ${readyToDelete && " line-through"}`}>{ele.content}</p>
+            <div key={ele.id} className=' bg my-4 py-1 px-2 border rounded-3xl shadow-lg bg-sky-50 hover:scale-105 hover:bg-white transition-all'>
+                <div className={`flex justify-between items-center font-bold text-lg ${(ele.isDeletable || readyToDelete) && " line-through"}`} >
+                    {/* Here Line through on Todo is depended on two state variables (i don't know good way or bad way) one is readyToDelete on singleTodo component level and 2nd id  ele.isDeletable value which is part of todoContainetArr state variable on root level of todo project.*/}
+                    <span className={` w-2 h-2 ${randomColorOfTailwind()} rounded-full`}></span>
+                    <p className=' capitalize'>{ele.heading}</p>
+                    <button
+                        className={`${ele.isFav ? 'text-yellow-400 hover:scale-110 ' : ` text-slate-400 hover:text-yellow-400 hover:scale-110`}  transition-all`}
+                        onClick={ ()=>{ (ele.isFav)? makeUnFavirote(ele) : makeFavirote(ele)  }}
+                    ><i className="ri-star-fill"></i></button>
+                </div>
+                <p className={`text-left ${(ele.isDeletable || readyToDelete) && " line-through"}`}>{ele.content}</p>
                 <div className='flex justify-center flex-wrap'>
                     <div
                         className=' w-auto sm:w-1/2 px-2 border rounded-md mx-1 hover:bg-red-300 hover:text-white transition-all'
-                        onClick={() =>setReadyToDelete(!readyToDelete)}
+                        onClick={() => setReadyToDelete(!readyToDelete)}
                     >{readyToDelete ? "Remove from Delete" : "Click to Delete"}</div>
 
 
@@ -41,22 +69,22 @@ const SingleTodo = ({todoContaintArr , ele, updateTodo, deleteTodo , index , dow
                                     onClick={() => updateTodo(ele)}
                                 ><i className="ri-pencil-fill "></i></button>
 
-                                <button 
+                                <button
                                     className='w-1/12 border rounded-md mx-1 hover:bg-teal-300 transition-all'
-                                    onClick={()=>{ (index!==0) && upTodo(ele) } }
-                                ><i className={`${index !== 0 ? "ri-arrow-up-double-line" : ""}`}></i></button>
+                                    onClick={() => { (index !== 0) && upTodo(ele) }}
+                                ><i className={`${index !== 0 ? "ri-arrow-up-double-line" : "ri-close-circle-line"}`}></i></button>
 
-                                <button 
+                                <button
                                     className='w-1/12 border rounded-md mx-1 hover:bg-green-300 transition-all'
-                                    onClick={ ()=>{ (index !== todoContaintArr.length-1) && downTodo(ele) }}
-                                ><i className={`${index !== todoContaintArr.length-1 ? "ri-arrow-down-double-line" : ""}`}></i></button>
+                                    onClick={() => { (index !== todoContaintArr.length - 1) && downTodo(ele) }}
+                                ><i className={`${index !== todoContaintArr.length - 1 ? "ri-arrow-down-double-line" : "ri-close-circle-line"}`}></i></button>
                             </>
 
                             : <>
 
                                 <button
                                     className='  sm:w-1/3 px-4 border rounded-md mx-1 bg-red-500 text-white font-bold hover:bg-red-800 transition-all'
-                                    onClick={()=>deleteTodo(ele)}
+                                    onClick={() => deleteTodo(ele)}
                                 >Delete</button>
                             </>
                     }
