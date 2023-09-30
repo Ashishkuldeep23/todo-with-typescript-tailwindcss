@@ -247,7 +247,7 @@ const MainTodo = () => {
       ></TodoBody>
 
 
-        <span className=' font-mono absolute bottom-1 right-1'>By: Ashish Kuldeep</span>
+        <span className=' font-mono fixed bottom-1 right-1'>By: Ashish Kuldeep</span>
     </>
   )
 }
