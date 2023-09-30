@@ -118,7 +118,7 @@ const TodoBody = ({ todoContaintArr, setModalVisiable, updateTodo, deleteTodo, u
 
 
                 <span
-                    className='text-5xl text-sky-300 absolute right-0 bottom-0 z-10 hover:text-sky-600 hover:cursor-pointer hover:scale-110 transition-all'
+                    className='text-5xl text-sky-300 absolute right-3 bottom-3 z-10 scale-150 hover:text-sky-600 hover:cursor-pointer hover:scale-125 active:scale-110 transition-all'
                     onClick={() => { setModalVisiable(true) }}
 
                 >

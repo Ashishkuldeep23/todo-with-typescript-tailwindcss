@@ -102,6 +102,10 @@ const MainTodo = () => {
     let findIndex = todoArr.findIndex((ele) => { return obj.id === ele.id })
     // console.log(findIndex)
 
+    // // // Below if to privent fav list (Mtlb agr jo index aya hai uske uper wala element in isFav true ho to yahi se return kr do element uper mth le jao.)
+    if(todoArr[findIndex-1].isFav) return console.warn("Can't up , fav is present just above this element.");
+
+    // // // Swap to values ---->
     let arr = [...todoArr]
     let currentItem = arr[findIndex]
     arr[findIndex] = arr[findIndex - 1]
@@ -142,7 +146,7 @@ const MainTodo = () => {
   function readyForAllDelete() {
     let arr = todoArr.map((ele) => { return { ...ele, isDeletable: true } })
     setTodoArr(arr)
-    console.log(todoArr)
+    // console.log(todoArr)
   }
 
   function removeReadyForAllDelete() {
@@ -176,7 +180,7 @@ const MainTodo = () => {
 
   }
 
-  function makeUnFavirote(obj: TInputOfTodo) {
+  function makeUnFavirote(obj: TInputOfTodo){
 
     let arr = [...todoArr]
 
@@ -247,7 +251,7 @@ const MainTodo = () => {
       ></TodoBody>
 
 
-      <span className=' font-mono fixed bottom-1 right-1'>By: Ashish Kuldeep</span>
+      <span className=' font-mono fixed bottom-1 right-1 text-slate-500'>By: Ashish Kuldeep</span>
     </>
   )
 }

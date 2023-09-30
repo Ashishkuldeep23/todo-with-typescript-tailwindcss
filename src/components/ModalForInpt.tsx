@@ -44,7 +44,7 @@ const ModalForInpt = ({ setModalVisiable, modalVisiable, addNewTodo, updatingTod
 
 
     if( !input.heading || !input.content ){
-      return alert("[404] :ToDo Data not given")
+      return alert("[400] :ToDo Data not given")
     }
 
 
