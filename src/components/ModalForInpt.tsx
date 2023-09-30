@@ -49,11 +49,13 @@ const ModalForInpt = ({ setModalVisiable, modalVisiable, addNewTodo, updatingTod
 
 
     if (updatingTodo) {
+      // // // Upadte todo fn
       // alert("ready for update")
       // console.log(input)
       actualToDoUpadateFunction(input)
     } else {
-      setInput({ heading: "", content: "" })
+      // // // Add todo fn ( set default values and add new todo by add to fn and hide modal)
+      setInput({ id: "" ,  heading: "", content: "" })
       addNewTodo(input); setModalVisiable(false);
     }
 

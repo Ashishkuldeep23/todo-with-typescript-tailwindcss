@@ -9,7 +9,7 @@ type SingleToDoProps = {
     index: number;
     todoContaintArr: TTodoObj[];
     updateTodo(obj: TTodoObj): void;
-    deleteTodo(obj: TTodoObj): void;
+    deleteOneTodo(obj: TTodoObj): void;
     upTodo(obj: TTodoObj): void;
     downTodo(obj: TTodoObj): void;
     makeFavirote(obj: TTodoObj): void;
@@ -17,7 +17,7 @@ type SingleToDoProps = {
 }
 
 
-const SingleTodo = ({ todoContaintArr, ele, updateTodo, deleteTodo, index, downTodo, upTodo, makeFavirote, makeUnFavirote }: SingleToDoProps) => {
+const SingleTodo = ({ todoContaintArr, ele, updateTodo, deleteOneTodo, index, downTodo, upTodo, makeFavirote, makeUnFavirote }: SingleToDoProps) => {
 
 
     const [readyToDelete, setReadyToDelete] = useState(ele.isDeletable);
@@ -46,7 +46,7 @@ const SingleTodo = ({ todoContaintArr, ele, updateTodo, deleteTodo, index, downT
             <div key={ele.id} className=' bg my-4 py-1 px-2 border rounded-3xl shadow-lg bg-sky-50 hover:scale-105 hover:bg-white transition-all'>
                 <div className={`flex justify-between items-center font-bold text-lg ${(ele.isDeletable || readyToDelete) && " line-through"}`} >
                     {/* Here Line through on Todo is depended on two state variables (i don't know good way or bad way) one is readyToDelete on singleTodo component level and 2nd id  ele.isDeletable value which is part of todoContainetArr state variable on root level of todo project.*/}
-                    <span className={` w-3 h-3 ${randomColorOfTailwind()} rounded-full text-xs text-white flex justify-center items-center`}>{ele.id}</span>
+                    <span className={` w-3 h-3 ${randomColorOfTailwind()} rounded-full text-xs text-white flex justify-center items-center`}>{index+1}</span>
                     <p className=' capitalize'>{ele.heading}</p>
                     <button
                         className={`${ele.isFav ? 'text-yellow-400 hover:scale-110 active:scale-50 transition-all' : ` text-slate-400 hover:text-sky-300 hover:scale-110  transition-all `}  `}
@@ -84,7 +84,7 @@ const SingleTodo = ({ todoContaintArr, ele, updateTodo, deleteTodo, index, downT
 
                                 <button
                                     className='  sm:w-1/3 px-4 border rounded-md mx-1 bg-red-500 text-white font-bold hover:bg-red-800 transition-all'
-                                    onClick={() => deleteTodo(ele)}
+                                    onClick={() => deleteOneTodo(ele)}
                                 >Delete</button>
                             </>
                     }

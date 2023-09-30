@@ -11,7 +11,7 @@ type TodoBodyProps = {
     todoContaintArr: TTodoObj[];
     setModalVisiable: Function;
     updateTodo(obj: TTodoObj): void;
-    deleteTodo(obj: TInputOfTodo): void;
+    deleteOneTodo(obj: TInputOfTodo): void;
     upTodo(obj: TInputOfTodo): void;
     downTodo(obj: TInputOfTodo): void;
     makeFavirote(obj: TInputOfTodo): void;
@@ -24,7 +24,7 @@ type TodoBodyProps = {
 
 
 
-const TodoBody = ({ todoContaintArr, setModalVisiable, updateTodo, deleteTodo, upTodo, downTodo, readyForAllDelete, removeReadyForAllDelete, allDeleteTodo , makeFavirote , makeUnFavirote }: TodoBodyProps) => {
+const TodoBody = ({ todoContaintArr, setModalVisiable, updateTodo, deleteOneTodo, upTodo, downTodo, readyForAllDelete, removeReadyForAllDelete, allDeleteTodo , makeFavirote , makeUnFavirote }: TodoBodyProps) => {
 
     const [allDeleteBtn, setAllDeleteBtn] = useState(false)
 
@@ -59,7 +59,7 @@ const TodoBody = ({ todoContaintArr, setModalVisiable, updateTodo, deleteTodo, u
 
                             ? todoContaintArr.map((ele: TTodoObj, i) => {
                                 return (
-                                    <SingleTodo key={ele.id} todoContaintArr={todoContaintArr} ele={ele} index={i} updateTodo={updateTodo} deleteTodo={deleteTodo} upTodo={upTodo} downTodo={downTodo} makeFavirote={makeFavirote} makeUnFavirote={makeUnFavirote}></SingleTodo>
+                                    <SingleTodo key={ele.id} todoContaintArr={todoContaintArr} ele={ele} index={i} updateTodo={updateTodo} deleteOneTodo={deleteOneTodo} upTodo={upTodo} downTodo={downTodo} makeFavirote={makeFavirote} makeUnFavirote={makeUnFavirote}></SingleTodo>
                                 )
 
                             })

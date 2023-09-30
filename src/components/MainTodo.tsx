@@ -5,9 +5,13 @@ import ModalForInpt from './ModalForInpt'
 import TodoBody from './TodoBody'
 
 
+import { v4 as uuidv4 }  from "uuid";
+
+
+
 
 export interface TTodoObj {
-  id: number | string;
+  id: string | number ;
   heading: string;
   content: string;
   isDeletable?: boolean;
@@ -46,7 +50,9 @@ const MainTodo = () => {
 
   // // // Below two var for update todo --->
   const [updatingTodo, setUpdatingTodo] = useState<boolean>(false)
-  const [input, setInput] = useState<TInputOfTodo>({ id: "", heading: "", content: "" })
+
+  let initialInputValues : TInputOfTodo = { id: "" , heading: "", content: "" }
+  const [input, setInput] = useState<TInputOfTodo>(initialInputValues)
 
 
 
@@ -61,7 +67,8 @@ const MainTodo = () => {
 
   function addNewTodo(obj: TInputOfTodo) {
 
-    setTodoArr([...todoArr, { ...obj, id: `${todoArr.length + 1}`, isDeletable: false, isFav: false }])
+    // setTodoArr([...todoArr, { ...obj, id: todoArr.length + 1 , isDeletable: false, isFav: false }])
+    setTodoArr([...todoArr, { ...obj, id:uuidv4(), isDeletable: false, isFav: false }])
 
   }
 
@@ -82,19 +89,23 @@ const MainTodo = () => {
     setTodoArr(arr)
 
     // // Back to normal all ------>
-
     setModalVisiable(false)
     setUpdatingTodo(false)
-    setInput({ id: "", heading: "", content: "" })
+    setInput(initialInputValues)
 
   }
 
-  function deleteTodo(obj: TInputOfTodo) {
+  function deleteOneTodo(obj: TInputOfTodo) {
 
     // alert("cl")
-
+    
     setTodoArr(todoArr.filter((el: TInputOfTodo) => { return el.id !== obj.id }))
+    
+    // upadateIDS(obj.id)
   }
+
+
+
 
   function upTodo(obj: TInputOfTodo) {
     // alert("up")
@@ -240,7 +251,7 @@ const MainTodo = () => {
         todoContaintArr={todoArr}
         setModalVisiable={setModalVisiable}
         updateTodo={updateTodo}
-        deleteTodo={deleteTodo}
+        deleteOneTodo={deleteOneTodo}
         upTodo={upTodo}
         downTodo={downTodo}
         readyForAllDelete={readyForAllDelete}
