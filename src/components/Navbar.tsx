@@ -37,9 +37,9 @@ const Navbar = () => {
                     </div>
 
                     <button
-                        className=" m-1 mt-auto border rounded font-bold text-white bg-red-600 hover:bg-red-900"
+                        className=" m-1 mt-auto border rounded font-bold text-white bg-red-600 hover:bg-red-900 uppercase"
                         onClick={() => setNavDivVisiable(!navDivVisiable)}
-                    >X</button>
+                    >Close</button>
                 </div>
 
                 {/* <div className=' col-start-1'>1 Personal</div>

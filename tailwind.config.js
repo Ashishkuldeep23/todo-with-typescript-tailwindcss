@@ -11,6 +11,13 @@ export default {
         "800" : "87vh" ,
         "22" : "5.5rem"
       },
+      minHeight : {
+        "5" : "5rem"
+      },
+      scale:{
+        "102" : "1.025"
+      }
+      
     },
   },
   plugins: [],

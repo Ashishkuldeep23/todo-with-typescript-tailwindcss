@@ -9,15 +9,30 @@ import SingleTodo from "./SingleTodo";
 
 
 
-type TodoBodyProps = {
+// type TodoBodyProps = {
+//     setModalVisiable: Function;
+//     readyForAllDelete(): void;
+//     removeReadyForAllDelete(): void;
+//     allDeleteTodo(): void;
+// }
+
+
+
+export interface ITodoPrpsGenral {
+
     todoContaintArr: TTodoObj[];
-    setModalVisiable: Function;
     updateTodo(obj: TTodoObj): void;
     deleteOneTodo(obj: TInputOfTodo): void;
     upTodo(obj: TInputOfTodo): void;
     downTodo(obj: TInputOfTodo): void;
     makeFavirote(obj: TInputOfTodo): void;
     makeUnFavirote(obj: TInputOfTodo): void;
+
+}
+
+
+interface TodoBodyProps extends ITodoPrpsGenral {
+    setModalVisiable: Function;
     readyForAllDelete(): void;
     removeReadyForAllDelete(): void;
     allDeleteTodo(): void;

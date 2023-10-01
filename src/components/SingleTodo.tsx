@@ -3,17 +3,26 @@
 import { useState } from 'react'
 import { TTodoObj } from './MainTodo'
 
+import { ITodoPrpsGenral } from "./TodoBody"
 
-type SingleToDoProps = {
+
+// type SingleToDoProps = {
+//     ele: TTodoObj;
+//     index: number;
+//     todoContaintArr: TTodoObj[];
+//     updateTodo(obj: TTodoObj): void;
+//     deleteOneTodo(obj: TTodoObj): void;
+//     upTodo(obj: TTodoObj): void;
+//     downTodo(obj: TTodoObj): void;
+//     makeFavirote(obj: TTodoObj): void;
+//     makeUnFavirote(obj: TTodoObj): void;
+// }
+
+
+// // // Means we can use extends keyword and use it into improted interfaces also ( previously using above ) --->
+interface SingleToDoProps extends ITodoPrpsGenral{
     ele: TTodoObj;
     index: number;
-    todoContaintArr: TTodoObj[];
-    updateTodo(obj: TTodoObj): void;
-    deleteOneTodo(obj: TTodoObj): void;
-    upTodo(obj: TTodoObj): void;
-    downTodo(obj: TTodoObj): void;
-    makeFavirote(obj: TTodoObj): void;
-    makeUnFavirote(obj: TTodoObj): void;
 }
 
 
@@ -43,7 +52,7 @@ const SingleTodo = ({ todoContaintArr, ele, updateTodo, deleteOneTodo, index, do
     return (
         <>
 
-            <div key={ele.id} className=' bg my-4 py-1 px-2 border rounded-3xl shadow-lg bg-sky-50 hover:scale-105 hover:bg-white transition-all'>
+            <div key={ele.id} className=' bg my-4 py-1 px-2 border rounded-3xl shadow-lg bg-sky-50 hover:scale-102 hover:bg-white transition-all'>
                 <div className={`flex justify-between items-center font-bold text-lg ${(ele.isDeletable || readyToDelete) && " line-through"}`} >
                     {/* Here Line through on Todo is depended on two state variables (i don't know good way or bad way) one is readyToDelete on singleTodo component level and 2nd id  ele.isDeletable value which is part of todoContainetArr state variable on root level of todo project.*/}
                     <span className={` w-3 h-3 ${randomColorOfTailwind()} rounded-full text-xs text-white flex justify-center items-center`}>{index+1}</span>
