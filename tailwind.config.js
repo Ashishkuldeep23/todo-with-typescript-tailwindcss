@@ -8,6 +8,7 @@ export default {
 
       height: {
         '900': '90vh',
+        "800" : "87vh" ,
         "22" : "5.5rem"
       },
     },

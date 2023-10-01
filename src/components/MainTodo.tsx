@@ -47,7 +47,6 @@ const MainTodo = () => {
 
   const [modalVisiable, setModalVisiable] = useState<boolean>(false)
 
-
   // // // Below two var for update todo --->
   const [updatingTodo, setUpdatingTodo] = useState<boolean>(false)
 

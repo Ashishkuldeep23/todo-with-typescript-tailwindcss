@@ -4,7 +4,9 @@ import { useState } from "react";
 import { TInputOfTodo, TTodoObj } from "./MainTodo";
 
 
+import Navbar from "./Navbar";
 import SingleTodo from "./SingleTodo";
+
 
 
 type TodoBodyProps = {
@@ -24,7 +26,7 @@ type TodoBodyProps = {
 
 
 
-const TodoBody = ({ todoContaintArr, setModalVisiable, updateTodo, deleteOneTodo, upTodo, downTodo, readyForAllDelete, removeReadyForAllDelete, allDeleteTodo , makeFavirote , makeUnFavirote }: TodoBodyProps) => {
+const TodoBody = ({ todoContaintArr, setModalVisiable, updateTodo, deleteOneTodo, upTodo, downTodo, readyForAllDelete, removeReadyForAllDelete, allDeleteTodo, makeFavirote, makeUnFavirote }: TodoBodyProps) => {
 
     const [allDeleteBtn, setAllDeleteBtn] = useState(false)
 
@@ -34,23 +36,9 @@ const TodoBody = ({ todoContaintArr, setModalVisiable, updateTodo, deleteOneTodo
 
     return (
         <>
-            <div className='w-full md:w-1/4 h-900 border-4 p-2 pb-12 rounded-2xl border-sky-200 relative  bg-white'  >
+            <div className='w-full md:w-1/3 h-900 border-4 p-2 pb-12 rounded-2xl border-sky-200 relative  bg-white'  >
 
-                <nav className=' flex justify-between '>
-
-                    <i className="ri-menu-2-line text-sky-300 text-2xl hover:text-sky-600 hover:cursor-pointer hover:scale-110 transition-all"></i>
-
-                    {/* <div className=' col-start-1'>1 Personal</div>
-                        <div className=' col-start-3'>2 Professonal</div>
-                        <div className=' col-start-5 '>3 All</div> */}
-
-                    <span className='text-sky-300 text-2xl hover:text-sky-600 hover:scale-110 transition-all'>TODO</span>
-
-                </nav>
-
-
-
-
+                <Navbar />
 
                 <div className='text-center my-4 h-full  overflow-y-auto overflow-x-hidden relative'>
                     {
