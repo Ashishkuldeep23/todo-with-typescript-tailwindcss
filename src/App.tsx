@@ -32,7 +32,6 @@ function Layout( {children , bg = "bg-sky-100"} : LayOutProp ) {
 
 
 
-
 function App() {
 
   return (
@@ -42,11 +41,7 @@ function App() {
         Hello world!
       </h1> */}
 
-
         <Layout bg="bg-fuchsia-100">  <MainTodo /> </Layout>
-
-
-     
 
     </>
   )

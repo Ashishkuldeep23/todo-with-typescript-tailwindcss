@@ -1,4 +1,4 @@
-import React from 'react'
+import React , {useEffect, useRef} from 'react'
 import { TInputOfTodo } from './MainTodo';
 
 
@@ -22,6 +22,13 @@ const ModalForInpt = ({ setModalVisiable, modalVisiable, addNewTodo, updatingTod
   // const [modalVisiable , setModalVisiable] = useState<boolean>(false)
 
   // const [input, setInput] = useState<TInputOfTodo>({ heading: "", content: "" })
+
+
+  // // // Some refs ---->
+
+  const todoHeading = useRef(null)
+  // // // useRef should given null at initial data.
+
 
 
 
@@ -63,11 +70,24 @@ const ModalForInpt = ({ setModalVisiable, modalVisiable, addNewTodo, updatingTod
   }
 
 
+
+  useEffect( ()=>{
+
+    // if(todoHeading.current.){
+    //   todoHeading.current.focus()
+    // }
+
+    
+
+    console.log(todoHeading.current)
+  } , [] )
+
+
   return (
-    <div className={` h-full w-screen border  bg-blue-300 absolute z-20 justify-center items-center ${modalVisiable ? "flex" : 'hidden'} `} >
+    <div className={` h-full w-screen border  bg-blue-300 absolute z-20 justify-center items-center top-full transition-all flex ${modalVisiable ? " top-0 z-10" : ' top-full -z-50 hidden'} `} >
 
       <div className=' w-11/12 md:w-1/4 p-2 bg-orange-300 border border-red-500 rounded-2xl flex flex-col text-center py-8 relative'>
-        <button className=' absolute right-3 top-2 border px-2 bg-red-500 hover:bg-red-700 rounded-lg' onClick={() => { setModalVisiable(false) }}>X</button>
+        <button className=' absolute right-3 top-2 border px-2 text-white font-bold bg-red-500 hover:bg-red-700 rounded-lg' onClick={() => { setModalVisiable(false) }}>X</button>
         <h2 className='text-2xl font-bold underline'>{updatingTodo ? "Update" : "Create"} Todo</h2>
 
         <label
@@ -80,6 +100,7 @@ const ModalForInpt = ({ setModalVisiable, modalVisiable, addNewTodo, updatingTod
           onChange={onChangeHandler}
           value={input.heading}
           placeholder='TODO Heading'
+          ref={todoHeading}
         />
 
         <label

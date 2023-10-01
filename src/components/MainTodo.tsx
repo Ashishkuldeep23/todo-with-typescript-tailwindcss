@@ -103,9 +103,6 @@ const MainTodo = () => {
     // upadateIDS(obj.id)
   }
 
-
-
-
   function upTodo(obj: TInputOfTodo) {
     // alert("up")
 
@@ -261,7 +258,7 @@ const MainTodo = () => {
       ></TodoBody>
 
 
-      <span className=' font-mono fixed bottom-1 right-1 text-slate-500 z-50'>By: Ashish Kuldeep</span>
+      <span className=' font-mono fixed -bottom-2 right-1 text-slate-500 z-50 hover:bottom-0 transition-all'>By: Ashish Kuldeep</span>
     </>
   )
 }
