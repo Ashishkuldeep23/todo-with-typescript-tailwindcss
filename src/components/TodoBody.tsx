@@ -1,11 +1,12 @@
 // import React from 'react'
 
-import { useState } from "react";
+import { useState , useContext } from "react";
 import { TInputOfTodo, TTodoObj } from "./MainTodo";
 
 
 import Navbar from "./Navbar";
 import SingleTodo from "./SingleTodo";
+import ThemeContext from "./ThemeContext";
 
 
 
@@ -45,14 +46,16 @@ const TodoBody = ({ todoContaintArr, setModalVisiable, updateTodo, deleteOneTodo
 
     const [allDeleteBtn, setAllDeleteBtn] = useState(false)
 
+    const theme = useContext(ThemeContext)
+
 
 
     // console.log(props)
 
     return (
         <>
-            <div className='w-full md:w-1/3 h-900 border-4 p-2 pb-12 rounded-2xl border-sky-200 relative  bg-white'  >
-
+            <div className={`w-full md:w-1/3 h-900 border-4 p-2 pb-12 rounded-2xl overflow-hidden ${!theme ? "border-sky-300 " : " border-violet-400"} relative ${!theme ? "bg-white" : " bg-black"} `}  >
+ 
                 <Navbar />
 
                 <div className='text-center my-4 h-full  overflow-y-auto overflow-x-hidden relative'>
@@ -66,20 +69,20 @@ const TodoBody = ({ todoContaintArr, setModalVisiable, updateTodo, deleteOneTodo
                                 )
 
                             })
-                            : <div className="w-full flex flex-col justify-center items-center">
+                            : <div className={`w-full flex flex-col justify-center items-center ${!theme ? " text-black " : " text-white "} `}>
                                 {/* Skeleton code here ------> */}
 
                                 <img className=" w-2/5 hover:scale-125 transition-all" src="https://blog.ipleaders.in/wp-content/uploads/2017/01/write-well.png" alt="" />
 
-                                <h1 className=" text-xl w-fit">Start Writing <span className="text-sky-300 text-2xl hover:text-sky-600 hover:scale-110 transition-all">TODOs</span></h1>
-                                <h5 className=" text-sm">By clicking <span className="text-sky-300 text-lg hover:text-sky-600 hover:scale-110 transition-all">plus</span> button </h5>
+                                <h1 className=" text-xl w-fit">Start Writing <span className={`${!theme ? "text-sky-500 " : " text-violet-500 "} text-2xl hover:text-sky-600 hover:scale-110 transition-all`}>TODOs</span></h1>
+                                <h5 className=" text-sm">By clicking <span className={` ${!theme ? "text-sky-500 " : " text-violet-500 "} text-lg hover:text-sky-600 hover:scale-110 transition-all `}>plus</span> button </h5>
 
 
-                                <div className=' w-full h-22  my-4 py-1 px-2 border rounded-3xl shadow-lg bg-sky-50 hover:scale-105 hover:bg-white transition-all'></div>
+                                <div className={` w-full h-22  my-4 py-1 px-2 border rounded-3xl shadow-lg ${!theme ? "bg-sky-50 " : " bg-violet-100 "}   ${!theme ? "hover:bg-white " : " hover:bg-slate-300 "} hover:scale-102 transition-all`}></div>
 
-                                <div className=' w-full h-22 my-4 py-1 px-2 border rounded-3xl shadow-lg bg-sky-50 hover:scale-105 hover:bg-white transition-all'></div>
+                                <div className={` w-full h-22  my-4 py-1 px-2 border rounded-3xl shadow-lg ${!theme ? "bg-sky-50 " : " bg-violet-100 "}   ${!theme ? "hover:bg-white " : " hover:bg-slate-300 "} hover:scale-102 transition-all`}></div>
 
-                                <div className=' w-full h-22 my-4 py-1 px-2 border rounded-3xl shadow-lg bg-sky-50 hover:scale-105 hover:bg-white transition-all'></div>
+                                <div className={` w-full h-22  my-4 py-1 px-2 border rounded-3xl shadow-lg ${!theme ? "bg-sky-50 " : " bg-violet-100 "}   ${!theme ? "hover:bg-white " : " hover:bg-slate-300 "} hover:scale-102 transition-all`}></div>
 
                             </div>
                     }
@@ -121,7 +124,7 @@ const TodoBody = ({ todoContaintArr, setModalVisiable, updateTodo, deleteOneTodo
 
 
                 <span
-                    className=' text-5xl text-sky-300 absolute right-4 bottom-5 z-10 scale-150 hover:text-sky-600 hover:cursor-pointer hover:scale-125 active:scale-110 transition-all'
+                    className={` text-5xl ${!theme ? "text-sky-500 " : " text-violet-500 "} absolute right-4 bottom-5 z-10 scale-150 hover:text-sky-600 hover:cursor-pointer hover:scale-125 active:scale-110 transition-all`}
                     onClick={() => { setModalVisiable(true) }}
 
                 >

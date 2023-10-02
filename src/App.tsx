@@ -1,5 +1,5 @@
 
-import React from "react"
+// import React from "react"
 
 import "./index.css"
 
@@ -8,26 +8,26 @@ import MainTodo from "./components/MainTodo"
 
 // type Children = React.ReactNode;
 
-type LayOutProp = {
-  children: React.ReactNode;
-  bg ?: string;
-}
+// type LayOutProp = {
+//   children: React.ReactNode;
+//   bg ?: string;
+// }
 
 
 
-function Layout( {children , bg = "bg-sky-100"} : LayOutProp ) {
+// function Layout( {children , bg = "bg-sky-100"} : LayOutProp ) {
 
-  // console.log(bg)
+//   // console.log(bg)
 
-  return (
-    <>
-      <div className={`w-full min-h-screen p-3 flex  justify-center items-center flex-col overflow-hidden ${bg}`}>
-        {children}
-      </div>
+//   return (
+//     <>
+//       <div className={`w-full min-h-screen p-3 flex  justify-center items-center flex-col overflow-hidden ${bg}`}>
+//         {children}
+//       </div>
 
-    </>
-  )
-}
+//     </>
+//   )
+// }
 
 
 
@@ -41,7 +41,9 @@ function App() {
         Hello world!
       </h1> */}
 
-        <Layout bg="bg-fuchsia-100">  <MainTodo /> </Layout>
+        {/* <Layout bg="bg-fuchsia-100">  <MainTodo /> </Layout> */}
+
+        <MainTodo />
 
     </>
   )

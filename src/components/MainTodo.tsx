@@ -5,13 +5,13 @@ import ModalForInpt from './ModalForInpt'
 import TodoBody from './TodoBody'
 
 
-import { v4 as uuidv4 }  from "uuid";
+import { v4 as uuidv4 } from "uuid";
 
-
+import ThemeContext from './ThemeContext';
 
 
 export interface TTodoObj {
-  id: string | number ;
+  id: string | number;
   heading: string;
   content: string;
   isDeletable?: boolean;
@@ -51,9 +51,11 @@ const MainTodo = () => {
   // // // Below two var for update todo --->
   const [updatingTodo, setUpdatingTodo] = useState<boolean>(false)
 
-  let initialInputValues : TInputOfTodo = { id: "" , heading: "", content: "" , isFav : false }
+  let initialInputValues: TInputOfTodo = { id: "", heading: "", content: "", isFav: false }
   const [input, setInput] = useState<TInputOfTodo>(initialInputValues)
 
+
+  const [themeMode, setThemeMode] = useState<boolean>(false)
 
 
 
@@ -68,7 +70,7 @@ const MainTodo = () => {
   function addNewTodo(obj: TInputOfTodo) {
 
     // setTodoArr([...todoArr, { ...obj, id: todoArr.length + 1 , isDeletable: false, isFav: false }])
-    setTodoArr([...todoArr, { ...obj, id:uuidv4(), isDeletable: false, isFav: false }])
+    setTodoArr([...todoArr, { ...obj, id: uuidv4(), isDeletable: false, isFav: false }])
 
   }
 
@@ -77,7 +79,7 @@ const MainTodo = () => {
     // console.warn(JSON.stringify(obj))
     setModalVisiable(true)
     setUpdatingTodo(true)
-    setInput({ id: obj.id, heading: obj.heading, content: obj.content , isFav : obj.isFav })
+    setInput({ id: obj.id, heading: obj.heading, content: obj.content, isFav: obj.isFav })
   }
 
   function actualToDoUpadateFunction(obj: TInputOfTodo) {
@@ -98,9 +100,9 @@ const MainTodo = () => {
   function deleteOneTodo(obj: TInputOfTodo) {
 
     // alert("cl")
-    
+
     setTodoArr(todoArr.filter((el: TInputOfTodo) => { return el.id !== obj.id }))
-    
+
     // upadateIDS(obj.id)
   }
 
@@ -111,7 +113,7 @@ const MainTodo = () => {
     // console.log(findIndex)
 
     // // // Below if to privent fav list (Mtlb agr jo index aya hai uske uper wala element in isFav true ho to yahi se return kr do element uper mth le jao.)
-    if(todoArr[findIndex-1].isFav) return console.warn("Can't up , fav is present just above this element.");
+    if (todoArr[findIndex - 1].isFav) return console.warn("Can't up , fav is present just above this element.");
 
     // // // Swap to values ---->
     let arr = [...todoArr]
@@ -132,7 +134,7 @@ const MainTodo = () => {
 
     let findIndex = todoArr.findIndex((ele) => { return obj.id === ele.id })
 
-    console.log(findIndex)
+    // console.log(findIndex)
 
 
 
@@ -188,7 +190,7 @@ const MainTodo = () => {
 
   }
 
-  function makeUnFavirote(obj: TInputOfTodo){
+  function makeUnFavirote(obj: TInputOfTodo) {
 
     let arr = [...todoArr]
 
@@ -234,32 +236,42 @@ const MainTodo = () => {
 
   return (
     <>
+      <ThemeContext.Provider value={themeMode}>
 
-      <ModalForInpt
-        modalVisiable={modalVisiable}
-        setModalVisiable={setModalVisiable}
-        addNewTodo={addNewTodo}
-        updatingTodo={updatingTodo}
-        input={input}
-        setInput={setInput}
-        actualToDoUpadateFunction={actualToDoUpadateFunction}
-      ></ModalForInpt>
-      <TodoBody
-        todoContaintArr={todoArr}
-        setModalVisiable={setModalVisiable}
-        updateTodo={updateTodo}
-        deleteOneTodo={deleteOneTodo}
-        upTodo={upTodo}
-        downTodo={downTodo}
-        readyForAllDelete={readyForAllDelete}
-        removeReadyForAllDelete={removeReadyForAllDelete}
-        allDeleteTodo={allDeleteTodo}
-        makeFavirote={makeFavirote}
-        makeUnFavirote={makeUnFavirote}
-      ></TodoBody>
+        <div className={`w-full min-h-screen p-3 ${themeMode ? "bg-sky-200 " : " bg-violet-200 "} flex justify-center items-center flex-col overflow-hidden `}>
 
+          <button
+            className={` absolute top-2 right-2 px-2 ${!themeMode ? "bg-sky-500 " : " bg-violet-500 "} rounded text-white font-bold z-30 `}
+            onClick={() => { setThemeMode(!themeMode) }}
+          >{`${!themeMode ? "Dark " : " Light "}`}</button>
 
-      <span className=' font-mono fixed -bottom-2 right-1 text-slate-500 z-50 hover:bottom-0 transition-all'>By: Ashish Kuldeep</span>
+          <ModalForInpt
+            modalVisiable={modalVisiable}
+            setModalVisiable={setModalVisiable}
+            addNewTodo={addNewTodo}
+            updatingTodo={updatingTodo}
+            input={input}
+            setInput={setInput}
+            actualToDoUpadateFunction={actualToDoUpadateFunction}
+          ></ModalForInpt>
+          <TodoBody
+            todoContaintArr={todoArr}
+            setModalVisiable={setModalVisiable}
+            updateTodo={updateTodo}
+            deleteOneTodo={deleteOneTodo}
+            upTodo={upTodo}
+            downTodo={downTodo}
+            readyForAllDelete={readyForAllDelete}
+            removeReadyForAllDelete={removeReadyForAllDelete}
+            allDeleteTodo={allDeleteTodo}
+            makeFavirote={makeFavirote}
+            makeUnFavirote={makeUnFavirote}
+          ></TodoBody>
+
+        </div>
+        <span className=' font-mono fixed -bottom-2 right-1 text-slate-500 z-50 hover:bottom-0 transition-all'>By: Ashish Kuldeep</span>
+
+      </ThemeContext.Provider>
     </>
   )
 }

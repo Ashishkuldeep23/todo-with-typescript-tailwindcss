@@ -1,9 +1,10 @@
 // import React from 'react'
 
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import { TTodoObj } from './MainTodo'
 
 import { ITodoPrpsGenral } from "./TodoBody"
+import ThemeContext from './ThemeContext';
 
 
 // type SingleToDoProps = {
@@ -20,7 +21,7 @@ import { ITodoPrpsGenral } from "./TodoBody"
 
 
 // // // Means we can use extends keyword and use it into improted interfaces also ( previously using above ) --->
-interface SingleToDoProps extends ITodoPrpsGenral{
+interface SingleToDoProps extends ITodoPrpsGenral {
     ele: TTodoObj;
     index: number;
 }
@@ -48,17 +49,21 @@ const SingleTodo = ({ todoContaintArr, ele, updateTodo, deleteOneTodo, index, do
         return colors[Math.floor(Math.random() * colors.length)]
     }
 
+    const theme = useContext(ThemeContext)
 
     return (
         <>
 
-            <div key={ele.id} className=' bg my-4 py-1 px-2 border rounded-3xl shadow-lg bg-sky-50 hover:scale-102 hover:bg-white transition-all'>
+            <div key={ele.id} className={`my-4 py-1 px-2 border rounded-3xl shadow-lg ${!theme ? "bg-sky-50 " : " bg-violet-100 "}   ${!theme ? "hover:bg-white " : " hover:bg-slate-300 "} hover:scale-102 transition-all`}>
                 <div className={`flex justify-between items-center font-bold text-lg ${(ele.isDeletable || readyToDelete) && " line-through"}`} >
                     {/* Here Line through on Todo is depended on two state variables (i don't know good way or bad way) one is readyToDelete on singleTodo component level and 2nd id  ele.isDeletable value which is part of todoContainetArr state variable on root level of todo project.*/}
-                    <span className={` w-3 h-3 ${randomColorOfTailwind()} rounded-full text-xs text-white flex justify-center items-center`}>{index+1}</span>
+                    <span className={` w-3 h-3 ${randomColorOfTailwind()} rounded-full text-xs text-white flex justify-center items-center`}>{index + 1}</span>
                     <p className=' capitalize'>{ele.heading}</p>
                     <button
-                        className={`${ele.isFav ? 'text-yellow-400 hover:scale-110 active:scale-50 transition-all' : ` text-slate-400 hover:text-sky-300 hover:scale-110  transition-all `}  `}
+                        className={`${ele.isFav
+                            ? 'text-yellow-400 hover:scale-110 active:scale-50 transition-all'
+                            : ` ${!theme ? "text-sky-200 hover:text-sky-500 " : " text-violet-300 hover:text-violet-600 "} hover:scale-110  transition-all `}  
+                            `}
                         onClick={() => { (ele.isFav) ? makeUnFavirote(ele) : makeFavirote(ele) }}
                     ><i className="ri-star-fill"></i></button>
                 </div>
@@ -80,12 +85,12 @@ const SingleTodo = ({ todoContaintArr, ele, updateTodo, deleteOneTodo, index, do
 
                                 <button
                                     className='w-1/12 border rounded-md mx-1 hover:bg-teal-300 transition-all'
-                                    onClick={() => { (index !== 0) && (!ele.isDeletable  && !ele.isFav) && upTodo(ele) }}
+                                    onClick={() => { (index !== 0) && (!ele.isDeletable && !ele.isFav) && upTodo(ele) }}
                                 ><i className={`${index !== 0 ? "ri-arrow-up-double-line" : "ri-close-circle-line"}`}></i></button>
 
                                 <button
                                     className='w-1/12 border rounded-md mx-1 hover:bg-green-300 transition-all'
-                                    onClick={() => { (index !== todoContaintArr.length - 1) && (!ele.isDeletable  && !ele.isFav) && downTodo(ele) }}
+                                    onClick={() => { (index !== todoContaintArr.length - 1) && (!ele.isDeletable && !ele.isFav) && downTodo(ele) }}
                                 ><i className={`${index !== todoContaintArr.length - 1 ? "ri-arrow-down-double-line" : "ri-close-circle-line"}`}></i></button>
                             </>
 

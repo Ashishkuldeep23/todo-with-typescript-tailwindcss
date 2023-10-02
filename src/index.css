@@ -16,6 +16,12 @@
 
 
 
+*::selection{
+    color: aquamarine;
+    background-color: darkslategrey;
+}
+
+
 html, body{
     width: 100%;
     height: 100dvh;
