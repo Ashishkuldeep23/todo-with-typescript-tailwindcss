@@ -97,11 +97,11 @@ const TodoBody = ({ todoContaintArr, setModalVisiable, updateTodo, deleteOneTodo
                             <div className="flex flex-wrap justify-center sm:flex-row-reverse">
 
                                 {
-                                    (allDeleteBtn) && <button className="mx-1 border rounded px-2 font-bold bg-red-400 hover:bg-red-700 hover:text-white transition-all" onClick={() => { allDeleteTodo(); setAllDeleteBtn(!allDeleteBtn) }}>All Delete</button>
+                                    (allDeleteBtn) && <button className="mx-1 border mb-2 rounded px-2 font-bold bg-red-400 hover:bg-red-700 hover:text-white transition-all" onClick={() => { allDeleteTodo(); setAllDeleteBtn(!allDeleteBtn) }}>All Delete</button>
                                 }
 
                                 <button
-                                    className=" mx-1 border rounded px-2 bg-red-200 hover:bg-red-400 transition-all"
+                                    className=" mx-1 mb-2 border rounded px-2 bg-red-200 hover:bg-red-400 transition-all"
                                     onClick={() => { setAllDeleteBtn(!allDeleteBtn); allDeleteBtn ? removeReadyForAllDelete() : readyForAllDelete() }}
                                 >{(allDeleteBtn) ? "Remove All Delete" : "Click to All Delete"}</button>
 
@@ -121,7 +121,7 @@ const TodoBody = ({ todoContaintArr, setModalVisiable, updateTodo, deleteOneTodo
 
 
                 <span
-                    className='text-5xl text-sky-300 absolute right-3 bottom-3 z-10 scale-150 hover:text-sky-600 hover:cursor-pointer hover:scale-125 active:scale-110 transition-all'
+                    className=' text-5xl text-sky-300 absolute right-4 bottom-5 z-10 scale-150 hover:text-sky-600 hover:cursor-pointer hover:scale-125 active:scale-110 transition-all'
                     onClick={() => { setModalVisiable(true) }}
 
                 >

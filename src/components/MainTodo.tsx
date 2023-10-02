@@ -23,6 +23,7 @@ export type TInputOfTodo = {
   heading: string;
   content: string;
   id: string | number;
+  isFav?: boolean;
 }
 
 
@@ -50,7 +51,7 @@ const MainTodo = () => {
   // // // Below two var for update todo --->
   const [updatingTodo, setUpdatingTodo] = useState<boolean>(false)
 
-  let initialInputValues : TInputOfTodo = { id: "" , heading: "", content: "" }
+  let initialInputValues : TInputOfTodo = { id: "" , heading: "", content: "" , isFav : false }
   const [input, setInput] = useState<TInputOfTodo>(initialInputValues)
 
 
@@ -76,7 +77,7 @@ const MainTodo = () => {
     // console.warn(JSON.stringify(obj))
     setModalVisiable(true)
     setUpdatingTodo(true)
-    setInput({ id: obj.id, heading: obj.heading, content: obj.content })
+    setInput({ id: obj.id, heading: obj.heading, content: obj.content , isFav : obj.isFav })
   }
 
   function actualToDoUpadateFunction(obj: TInputOfTodo) {

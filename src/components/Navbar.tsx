@@ -24,16 +24,21 @@ const Navbar = () => {
                         className=" ml-auto mr-1 mt-1 border px-1 rounded font-bold text-white bg-red-600 hover:bg-red-900"
                         onClick={() => setNavDivVisiable(!navDivVisiable)}
                     >X</button>
+
+                    <h2 className=" text-2xl text-center font-bold" >Features are :</h2>
+
                     <ul className="mb-3">
                         <li>ok</li>
                         <li>ok</li>
                         <li>ok</li>
                         <li>ok</li>
                         <li>ok</li>
+                        
                     </ul>
 
                     <div>
-                       <h1>Dev Info</h1>
+
+                        <h2 className=" text-2xl text-center font-bold" >Dev info :</h2>
                     </div>
 
                     <button

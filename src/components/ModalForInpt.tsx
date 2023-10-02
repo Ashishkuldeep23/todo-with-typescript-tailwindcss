@@ -62,7 +62,7 @@ const ModalForInpt = ({ setModalVisiable, modalVisiable, addNewTodo, updatingTod
       actualToDoUpadateFunction(input)
     } else {
       // // // Add todo fn ( set default values and add new todo by add to fn and hide modal)
-      setInput({ id: "", heading: "", content: "" })
+      setInput({ id: "", heading: "", content: "" , isFav : false })
       addNewTodo(input); setModalVisiable(false);
     }
 
@@ -129,9 +129,9 @@ const ModalForInpt = ({ setModalVisiable, modalVisiable, addNewTodo, updatingTod
       </div>
 
       <button
-          className='   w-11/12 md:w-1/4 my-2 border px-2 text-white font-bold rounded-lg bg-red-500 uppercase hover:bg-red-700 hover:scale-105 active:scale-90 transition-all '
-          onClick={() => { setModalVisiable(false) }}
-        >Close</button>
+        className='   w-11/12 md:w-1/4 my-2 border px-2 text-white font-bold rounded-lg bg-red-500 uppercase hover:bg-red-700 hover:scale-105 active:scale-90 transition-all '
+        onClick={() => { setModalVisiable(false) }}
+      >Close</button>
 
 
     </div>
