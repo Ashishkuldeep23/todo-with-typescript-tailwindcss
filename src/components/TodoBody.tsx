@@ -78,11 +78,11 @@ const TodoBody = ({ todoContaintArr, setModalVisiable, updateTodo, deleteOneTodo
                                 <h5 className=" text-sm">By clicking <span className={` ${!theme ? "text-sky-500 " : " text-violet-500 "} text-lg hover:text-sky-600 hover:scale-110 transition-all `}>plus</span> button </h5>
 
 
-                                <div className={` w-full h-22  my-4 py-1 px-2 border rounded-3xl shadow-lg ${!theme ? "bg-sky-50 " : " bg-sky-950 "}   ${!theme ? "hover:bg-white " : " hover:bg-emerald-800 "} hover:scale-102 transition-all`}></div>
+                                <div className={` w-full h-22  my-4 py-1 px-2  rounded-3xl shadow-lg ${!theme ? "bg-sky-50 " : " bg-sky-950 "}   ${!theme ? "hover:bg-white " : " hover:bg-emerald-800 "} hover:scale-102 transition-all`}></div>
 
-                                <div className={` w-full h-22  my-4 py-1 px-2 border rounded-3xl shadow-lg ${!theme ? "bg-sky-50 " : " bg-sky-950 "}   ${!theme ? "hover:bg-white " : " hover:bg-emerald-800 "} hover:scale-102 transition-all`}></div>
+                                <div className={` w-full h-22  my-4 py-1 px-2  rounded-3xl shadow-lg ${!theme ? "bg-sky-50 " : " bg-sky-950 "}   ${!theme ? "hover:bg-white " : " hover:bg-emerald-800 "} hover:scale-102 transition-all`}></div>
 
-                                <div className={` w-full h-22  my-4 py-1 px-2 border rounded-3xl shadow-lg ${!theme ? "bg-sky-50 " : " bg-sky-950 "}   ${!theme ? "hover:bg-white " : " hover:bg-emerald-800 "} hover:scale-102 transition-all`}></div>
+                                <div className={` w-full h-22  my-4 py-1 px-2  rounded-3xl shadow-lg ${!theme ? "bg-sky-50 " : " bg-sky-950 "}   ${!theme ? "hover:bg-white " : " hover:bg-emerald-800 "} hover:scale-102 transition-all`}></div>
 
                             </div>
                     }
