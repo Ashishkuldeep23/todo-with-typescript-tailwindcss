@@ -28,9 +28,6 @@ html, body{
 }
 
 
-
-#todo_main{
-    width: 70vh;
-    height: 70vh;
-    background-color: red;
+strong{
+    color: red;
 }

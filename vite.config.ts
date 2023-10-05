@@ -15,8 +15,8 @@ const manifestForPlugIn: Partial<VitePWAOptions> = {
   registerType: "prompt",
   includeAssets: ["**/*", "favicon.ico", "apple-touc-icon.png", "masked-icon.svg"],
   manifest: {
-    name: "TODO-app-by-ashish",
-    short_name: "TODO-app-by-ashish",
+    name: "TODO-app-by-Ashish",
+    short_name: "TODO-Ashish",
     description: "This is a simple Todo web app.",
     icons: [{
       src: 'https://blog.ipleaders.in/wp-content/uploads/2017/01/write-well.png',
