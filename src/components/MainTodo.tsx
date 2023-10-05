@@ -218,6 +218,17 @@ const MainTodo = () => {
 
   useEffect(() => {
 
+    // // // load theme value fro localstorage --->
+    let getDarkThemeData = localStorage.getItem("todo_dark_theme")
+
+    if(getDarkThemeData){
+      setThemeMode(JSON.parse(getDarkThemeData))
+    }
+
+
+
+    // // // LOAD created todos from localStorage
+
     let getTodoData = localStorage.getItem("todoData2023")
     // console.log(getTodoData)
 
@@ -238,11 +249,11 @@ const MainTodo = () => {
     <>
       <ThemeContext.Provider value={themeMode}>
 
-        <div className={`w-full min-h-screen p-3 ${themeMode ? "bg-sky-700 " : " bg-violet-200 "} flex justify-center items-center flex-col overflow-hidden `}>
+        <div className={`w-full min-h-screen p-3 ${themeMode ? "bg-sky-800 " : " bg-violet-200 "} flex justify-center items-center flex-col overflow-hidden `}>
 
           <button
-            className={` absolute top-2 right-2 px-2 ${!themeMode ? "bg-sky-500 " : " bg-violet-500 "} rounded text-white font-bold z-30 `}
-            onClick={() => { setThemeMode(!themeMode) }}
+            className={` absolute top-2 right-2 px-2 ${!themeMode ? "bg-sky-500 " : " bg-violet-500 "} border border-black rounded text-white font-bold z-30 `}
+            onClick={() => { setThemeMode(!themeMode); localStorage.setItem("todo_dark_theme" , JSON.stringify(!themeMode)) }}
           >{`${!themeMode ? "Dark " : " Light "}`}</button>
 
           <ModalForInpt

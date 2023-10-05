@@ -24,10 +24,7 @@ const ModalForInpt = ({ setModalVisiable, modalVisiable, addNewTodo, updatingTod
   // const [input, setInput] = useState<TInputOfTodo>({ heading: "", content: "" })
 
 
-  // // // Some refs ---->
-
-  const todoHeading = useRef(null)
-  // // // useRef should given null at initial data.
+  // // // New method used to focus() input tag , see the first input box ---> ( arrow fn used in ref prop of input.)
 
 
 
@@ -38,7 +35,6 @@ const ModalForInpt = ({ setModalVisiable, modalVisiable, addNewTodo, updatingTod
   function onChangeHandler(e: Event) {
     e.preventDefault()
     e.stopPropagation()
-    // console.log(e)
 
     setInput({ ...input, [e.target.name]: e.target.value })
   }
@@ -62,7 +58,7 @@ const ModalForInpt = ({ setModalVisiable, modalVisiable, addNewTodo, updatingTod
       actualToDoUpadateFunction(input)
     } else {
       // // // Add todo fn ( set default values and add new todo by add to fn and hide modal)
-      setInput({ id: "", heading: "", content: "" , isFav : false })
+      setInput({ id: "", heading: "", content: "", isFav: false })
       addNewTodo(input); setModalVisiable(false);
     }
 
@@ -70,17 +66,6 @@ const ModalForInpt = ({ setModalVisiable, modalVisiable, addNewTodo, updatingTod
   }
 
 
-
-  useEffect(() => {
-
-    // if(todoHeading.current.){
-    //   todoHeading.current.focus()
-    // }
-
-
-
-    console.log(todoHeading.current)
-  }, [])
 
 
   return (
@@ -99,13 +84,18 @@ const ModalForInpt = ({ setModalVisiable, modalVisiable, addNewTodo, updatingTod
           htmlFor="heading"
           className='text-left mt-4'
         >TODO Heading ⬇️</label>
+
         <input
           className='rounded focus:bg-green-200'
           type="text" id='heading' name="heading"
           onChange={onChangeHandler}
           value={input.heading}
           placeholder='TODO Heading'
-          ref={todoHeading}
+          // ref={todoHeading}
+          //   ref = {(inp) => {
+          //     inp?.focus();
+          //  }}
+
         />
 
         <label
@@ -123,7 +113,7 @@ const ModalForInpt = ({ setModalVisiable, modalVisiable, addNewTodo, updatingTod
         ></textarea>
 
         <button
-          className=' border w-fit  px-2 py-1 rounded ms-auto m-2 font-bold bg-green-400 hover:bg-green-600 hover:text-white hover:scale-110 active:scale-90 transition-all '
+          className=' border w-fit  px-5 py-1 m-2 mr-0 rounded ml-auto font-bold bg-green-400 hover:bg-green-600 hover:text-white hover:scale-110 active:scale-90 transition-all '
           onClick={handleClick}
         >{updatingTodo ? "Update" : "Create"}</button>
       </div>

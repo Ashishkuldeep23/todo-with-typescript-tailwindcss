@@ -13,31 +13,31 @@ import { VitePWA, VitePWAOptions } from "vite-plugin-pwa";
 // you can copy the base structure of manifest object.
 const manifestForPlugIn: Partial<VitePWAOptions> = {
   registerType: "prompt",
-  includeAssets: [ "**/*" , "favicon.ico", "apple-touc-icon.png", "masked-icon.svg"],
+  includeAssets: ["**/*", "favicon.ico", "apple-touc-icon.png", "masked-icon.svg"],
   manifest: {
     name: "TODO-app-by-ashish",
     short_name: "TODO-app-by-ashish",
     description: "This is a simple Todo web app.",
     icons: [{
-      src: '/android-chrome-192x192.png',
+      src: 'https://blog.ipleaders.in/wp-content/uploads/2017/01/write-well.png',
       sizes: '192x192',
       type: 'image/png',
       purpose: 'favicon'
     },
     {
-      src: '/android-chrome-512x512.png',
+      src: 'https://blog.ipleaders.in/wp-content/uploads/2017/01/write-well.png',
       sizes: '512x512',
       type: 'image/png',
       purpose: 'favicon'
     },
     {
-      src: '/apple-touch-icon.png',
+      src: 'https://blog.ipleaders.in/wp-content/uploads/2017/01/write-well.png',
       sizes: '180x180',
       type: 'image/png',
       purpose: 'apple touch icon',
     },
     {
-      src: '/maskable_icon.png',
+      src: 'https://blog.ipleaders.in/wp-content/uploads/2017/01/write-well.png',
       sizes: '512x512',
       type: 'image/png',
       purpose: 'any maskable',
