@@ -16,7 +16,12 @@ export default {
       },
       scale:{
         "102" : "1.025"
-      }
+      } ,
+      transitionDuration : {
+        "5" : "0.5s" ,
+        "10" : "1s"
+      } ,
+      
       
     },
   },

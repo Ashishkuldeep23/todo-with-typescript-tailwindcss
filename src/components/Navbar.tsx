@@ -22,10 +22,10 @@ const Navbar = () => {
 
                 {/* Menu div Starts here --> */}
                 <div
-                    className={` w-full h-800 flex flex-col ${!theme ? "bg-teal-300 " : " bg-green-300 "} absolute p-2 rounded-md overflow-y-auto transition-all ${(!navDivVisiable) ? " right-full rotate-180 scale-50 -z-50" : "right-0 rotate-0 z-40 scale-100"} `}
+                    className={` w-full h-800 flex flex-col ${!theme ? "bg-teal-300 " : " bg-green-300 "} absolute p-2 rounded-md overflow-y-auto duration-10 ${(!navDivVisiable) ? " right-full rotate-180 scale-50 -z-50" : "right-0 rotate-0 z-40 scale-100"} `}
                 >
                     <button
-                        className=" ml-auto mr-1 mt-1 border px-1 rounded font-bold text-white bg-red-600 hover:bg-red-900"
+                        className=" fixed top-2 right-2 px-5 ml-auto mr-1 mt-1 border rounded font-bold text-white bg-red-600 hover:bg-red-900"
                         onClick={() => setNavDivVisiable(!navDivVisiable)}
                     >X</button>
 
@@ -45,13 +45,16 @@ const Navbar = () => {
 
                     </ul>
 
-                    <div className=" text-center my-5">
+                    <div className=" text-center my-5 flex flex-col items-center">
 
                         <h2 className=" text-2xl text-center font-bold" >Dev info :</h2>
+
+                        {/* <img className=" w-36 rounded-full bg-yellow-500" src="http://res.cloudinary.com/dlvq8n2ca/image/upload/v1694854527/kckqxyoamncconejcjxx.png" alt="" /> */}
 
                         <p className=" text-lg font-bold">I'm Ashish Kuldeep</p>
                         <p>Learning MERN Stack</p>
                         <p>See more in my portfolio : <a className=" underline" href="https://ashish-kuldeep-portfolio.vercel.app/">Click</a></p>
+                        <img className=" w-36 rounded-full border" src="http://res.cloudinary.com/dlvq8n2ca/image/upload/v1694854527/kckqxyoamncconejcjxx.png" alt="" />
                     </div>
 
                     <div className=" text-center" >
