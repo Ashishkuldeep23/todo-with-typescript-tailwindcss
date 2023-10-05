@@ -238,7 +238,7 @@ const MainTodo = () => {
     <>
       <ThemeContext.Provider value={themeMode}>
 
-        <div className={`w-full min-h-screen p-3 ${themeMode ? "bg-sky-200 " : " bg-violet-200 "} flex justify-center items-center flex-col overflow-hidden `}>
+        <div className={`w-full min-h-screen p-3 ${themeMode ? "bg-sky-700 " : " bg-violet-200 "} flex justify-center items-center flex-col overflow-hidden `}>
 
           <button
             className={` absolute top-2 right-2 px-2 ${!themeMode ? "bg-sky-500 " : " bg-violet-500 "} rounded text-white font-bold z-30 `}
