@@ -252,7 +252,7 @@ const MainTodo = () => {
         <div className={`w-full min-h-screen p-3 ${themeMode ? "bg-sky-800 " : " bg-violet-200 "} flex justify-center items-center flex-col overflow-hidden `}>
 
           <button
-            className={` absolute top-2 right-2 px-2 ${!themeMode ? "bg-sky-500 " : " bg-violet-500 "} border border-black rounded text-white font-bold z-30 `}
+            className={` animate__animated animate__backInUp animate__slow absolute top-2 right-2 px-2 ${!themeMode ? "bg-sky-500 " : " bg-violet-500 "} border border-black rounded text-white font-bold z-30 `}
             onClick={() => { setThemeMode(!themeMode); localStorage.setItem("todo_dark_theme" , JSON.stringify(!themeMode)) }}
           >{!themeMode ? <i className="ri-contrast-2-line"></i>: <i className="ri-sun-line"></i>}</button>
 

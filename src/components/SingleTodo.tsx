@@ -32,6 +32,7 @@ const SingleTodo = ({ todoContaintArr, ele, updateTodo, deleteOneTodo, index, do
 
     const [readyToDelete, setReadyToDelete] = useState(ele.isDeletable);
 
+
     function randomColorOfTailwind() {
 
         let colors = [
@@ -55,16 +56,17 @@ const SingleTodo = ({ todoContaintArr, ele, updateTodo, deleteOneTodo, index, do
         <>
 
             <div
-                key={ele.id} className={`my-4 py-1 px-2 rounded-3xl shadow-lg ${!theme ? "bg-sky-50 " : " bg-sky-950 text-white "}   ${!theme ? "hover:bg-white " : " hover:bg-emerald-800 "} hover:scale-102 transition-all`}
+                key={ele.id} className={` animate__animated animate__faster ${(index%2 === 0) ? "animate__rotateInDownLeft" : "animate__rotateInDownRight"} my-4 py-1 px-2 rounded-3xl shadow-lg ${!theme ? "bg-sky-50 " : " bg-sky-950 text-white "}   ${!theme ? "hover:bg-white " : " hover:bg-emerald-800 "}  transition-all`}
             >
                 <div className={`flex justify-between items-center font-bold text-lg ${(ele.isDeletable || readyToDelete) && " line-through"}`} >
                     {/* Here Line through on Todo is depended on two state variables (i don't know good way or bad way) one is readyToDelete on singleTodo component level and 2nd id  ele.isDeletable value which is part of todoContainetArr state variable on root level of todo project.*/}
                     <span className={` w-3 h-3 ${randomColorOfTailwind()} rounded-full text-xs text-white flex justify-center items-center`}>{index + 1}</span>
                     <p className=' capitalize'>{ele.heading}</p>
                     <button
-                        className={`${ele.isFav
+                        className={` animate__animated animate__zoomInLeft animate__slow ${ele.isFav
                             ? 'text-yellow-400 hover:scale-110 active:scale-50 transition-all'
-                            : ` ${!theme ? "text-sky-200 hover:text-sky-500 " : " text-violet-300 hover:text-violet-600 "} hover:scale-110  transition-all `}  
+                            : ` ${!theme ? "text-sky-200 hover:text-sky-500 " : " text-violet-300 hover:text-violet-600 "}
+                            hover:scale-110  transition-all  `}  
                             `}
                         onClick={() => { (ele.isFav) ? makeUnFavirote(ele) : makeFavirote(ele) }}
                     ><i className="ri-star-fill"></i></button>

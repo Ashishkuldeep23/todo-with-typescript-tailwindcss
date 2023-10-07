@@ -71,13 +71,13 @@ const ModalForInpt = ({ setModalVisiable, modalVisiable, addNewTodo, updatingTod
 
 
   return (
-    <div className={` h-full w-screen border  ${!theme ? "bg-blue-300" : "bg-sky-900"} flex flex-col justify-center items-center absolute transition-all  
+    <div className={`h-full w-screen border  ${!theme ? "bg-blue-300" : "bg-sky-900"} flex flex-col justify-center items-center absolute transition-all  
        ${modalVisiable ? " top-0 z-50" : ' top-full -z-50 hidden'} `}
     >
 
-      <div className=' w-11/12 md:w-1/4 p-2 bg-orange-300 border border-red-500 rounded-2xl flex flex-col text-center py-8 relative'>
+      <div className=' animate__animated  animate__flipInX  w-11/12 md:w-1/4 p-2 bg-orange-300 border border-red-500 rounded-2xl flex flex-col text-center py-8 relative'>
         <button
-          className=' absolute right-3 top-2 border px-2 text-white font-bold rounded-lg bg-red-500 hover:bg-red-700 hover:scale-110 active:scale-90 transition-all '
+          className=' animate__animated animate__zoomInLeft animate__slow absolute right-3 top-2 border px-2 text-white font-bold rounded-lg bg-red-500 hover:bg-red-700 hover:scale-110 active:scale-90 transition-all '
           onClick={() => { setModalVisiable(false) }}
         >X</button>
         <h2 className='text-2xl font-bold underline'>{updatingTodo ? "Update" : "Create"} Todo</h2>
@@ -121,7 +121,7 @@ const ModalForInpt = ({ setModalVisiable, modalVisiable, addNewTodo, updatingTod
       </div>
 
       <button
-        className='   w-11/12 md:w-1/4 my-2 border px-2 text-white font-bold rounded-lg bg-red-500 uppercase hover:bg-red-700 hover:scale-105 active:scale-90 transition-all '
+        className=' animate__animated  animate__zoomInDown  w-11/12 md:w-1/4 my-2 border px-2 text-white font-bold rounded-lg bg-red-500 uppercase hover:bg-red-700 hover:scale-105 active:scale-90 transition-all '
         onClick={() => { setModalVisiable(false) }}
       >Close</button>
 

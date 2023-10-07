@@ -72,17 +72,20 @@ const TodoBody = ({ todoContaintArr, setModalVisiable, updateTodo, deleteOneTodo
                             : <div className={`w-full flex flex-col justify-center items-center ${!theme ? " text-black " : " text-white "} `}>
                                 {/* Skeleton code here ------> */}
 
-                                <img className=" w-2/5 hover:scale-125 transition-all" src="https://blog.ipleaders.in/wp-content/uploads/2017/01/write-well.png" alt="" />
+                                <img className="animate__animated  animate__fadeInDown w-2/5 hover:scale-125 transition-all" src="https://blog.ipleaders.in/wp-content/uploads/2017/01/write-well.png" alt="" />
+
+                                <div className=" animate__animated animate__fadeInUp">
 
                                 <h1 className=" text-xl w-fit">Start Writing <span className={`${!theme ? "text-sky-500 " : " text-violet-500 "} text-2xl hover:text-sky-600 hover:scale-110 transition-all`}>TODOs</span></h1>
                                 <h5 className=" text-sm">By clicking <span className={` ${!theme ? "text-sky-500 " : " text-violet-500 "} text-lg hover:text-sky-600 hover:scale-110 transition-all `}>plus</span> button </h5>
+                                </div>
 
 
-                                <div className={` w-full h-22  my-4 py-1 px-2  rounded-3xl shadow-lg ${!theme ? "bg-sky-50 " : " bg-sky-950 "}   ${!theme ? "hover:bg-white " : " hover:bg-emerald-800 "} hover:scale-102 transition-all`}></div>
+                                <div className={` animate__animated animate__zoomIn w-full h-22  my-4 py-1 px-2  rounded-3xl shadow-lg ${!theme ? "bg-sky-50 " : " bg-sky-950 "}   ${!theme ? "hover:bg-white " : " hover:bg-emerald-800 "} hover:scale-102 transition-all`}></div>
 
-                                <div className={` w-full h-22  my-4 py-1 px-2  rounded-3xl shadow-lg ${!theme ? "bg-sky-50 " : " bg-sky-950 "}   ${!theme ? "hover:bg-white " : " hover:bg-emerald-800 "} hover:scale-102 transition-all`}></div>
+                                <div className={` animate__animated animate__zoomIn w-full h-22  my-4 py-1 px-2  rounded-3xl shadow-lg ${!theme ? "bg-sky-50 " : " bg-sky-950 "}   ${!theme ? "hover:bg-white " : " hover:bg-emerald-800 "} hover:scale-102 transition-all`}></div>
 
-                                <div className={` w-full h-22  my-4 py-1 px-2  rounded-3xl shadow-lg ${!theme ? "bg-sky-50 " : " bg-sky-950 "}   ${!theme ? "hover:bg-white " : " hover:bg-emerald-800 "} hover:scale-102 transition-all`}></div>
+                                <div className={` animate__animated animate__zoomIn w-full h-22  my-4 py-1 px-2  rounded-3xl shadow-lg ${!theme ? "bg-sky-50 " : " bg-sky-950 "}   ${!theme ? "hover:bg-white " : " hover:bg-emerald-800 "} hover:scale-102 transition-all`}></div>
 
                             </div>
                     }
@@ -104,14 +107,14 @@ const TodoBody = ({ todoContaintArr, setModalVisiable, updateTodo, deleteOneTodo
                                 }
 
                                 <button
-                                    className=" mx-1 mb-2 border rounded px-2 bg-red-200 hover:bg-red-400 transition-all"
+                                    className=" animate__animated animate__rubberBand mx-1 mb-2 border rounded px-2 bg-red-200 hover:bg-red-400 transition-all"
                                     onClick={() => { setAllDeleteBtn(!allDeleteBtn); allDeleteBtn ? removeReadyForAllDelete() : readyForAllDelete() }}
                                 >{(allDeleteBtn) ? "Remove All Delete" : "Click to All Delete"}</button>
 
                             </div>
 
                             :
-                            <button className=" w-1/4 h-5 border rounded px-2 bg-red-100 hover:bg-red-300 transition-all"></button>
+                            <button className="animate__animated animate__rubberBand w-1/4 h-5 border rounded px-2 bg-red-100 hover:bg-red-300 transition-all"></button>
 
 
                     }
@@ -124,7 +127,7 @@ const TodoBody = ({ todoContaintArr, setModalVisiable, updateTodo, deleteOneTodo
 
 
                 <span
-                    className={` text-5xl ${!theme ? "text-sky-500 " : " text-violet-500 "} absolute right-4 bottom-5 z-10 scale-150 hover:text-sky-600 hover:scale-125 active:scale-110 transition-all`}
+                    className={` animate__animated  animate__heartBeat animate__slow animate__repeat-2 text-5xl ${!theme ? "text-sky-500 " : " text-violet-500 "} absolute right-4 bottom-5 z-10 scale-150 hover:text-sky-600 hover:scale-125 active:scale-110 transition-all`}
                     onClick={() => { setModalVisiable(true) }}
 
                 >
