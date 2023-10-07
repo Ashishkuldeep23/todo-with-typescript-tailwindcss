@@ -1,5 +1,6 @@
-import React from 'react'
+import React , {useContext} from 'react'
 import { TInputOfTodo } from './MainTodo';
+import ThemeContext from './ThemeContext';
 
 
 type TModalProps = {
@@ -18,6 +19,7 @@ type TModalProps = {
 
 const ModalForInpt = ({ setModalVisiable, modalVisiable, addNewTodo, updatingTodo, input, setInput, actualToDoUpadateFunction }: TModalProps) => {
 
+  const theme =  useContext(ThemeContext);
 
   // const [modalVisiable , setModalVisiable] = useState<boolean>(false)
 
@@ -69,7 +71,7 @@ const ModalForInpt = ({ setModalVisiable, modalVisiable, addNewTodo, updatingTod
 
 
   return (
-    <div className={` h-full w-screen border  bg-blue-300 flex flex-col justify-center items-center absolute transition-all  
+    <div className={` h-full w-screen border  ${!theme ? "bg-blue-300" : "bg-sky-900"} flex flex-col justify-center items-center absolute transition-all  
        ${modalVisiable ? " top-0 z-50" : ' top-full -z-50 hidden'} `}
     >
 
