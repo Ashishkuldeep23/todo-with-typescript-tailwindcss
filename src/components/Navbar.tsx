@@ -54,7 +54,7 @@ const Navbar = () => {
                         <p className=" text-lg font-bold">I'm Ashish Kuldeep</p>
                         <p>Learning MERN Stack</p>
                         <p>See more in my portfolio : <a className=" underline" href="https://ashish-kuldeep-portfolio.vercel.app/" target="_blank">Click</a></p>
-                        <img className=" w-36 rounded-full border" src="http://res.cloudinary.com/dlvq8n2ca/image/upload/v1694854527/kckqxyoamncconejcjxx.png" alt="" />
+                        <img className=" w-36 rounded-full border hover:scale-105 transition-all" src="http://res.cloudinary.com/dlvq8n2ca/image/upload/v1694854527/kckqxyoamncconejcjxx.png" alt="" />
                     </div>
 
                     <div className=" text-center" >
