@@ -32,6 +32,8 @@ const SingleTodo = ({ todoContaintArr, ele, updateTodo, deleteOneTodo, index, do
 
     const [readyToDelete, setReadyToDelete] = useState(ele.isDeletable);
 
+    const theme = useContext(ThemeContext)
+
     // // // This Fn used in random color in index no. 
     function randomColorOfTailwind() {
 
@@ -50,7 +52,7 @@ const SingleTodo = ({ todoContaintArr, ele, updateTodo, deleteOneTodo, index, do
         return colors[Math.floor(Math.random() * colors.length)]
     }
 
-    const theme = useContext(ThemeContext)
+
 
     return (
         <>

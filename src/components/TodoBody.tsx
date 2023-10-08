@@ -1,6 +1,6 @@
 // import React from 'react'
 
-import { useState , useContext } from "react";
+import { useState, useContext } from "react";
 import { TInputOfTodo, TTodoObj } from "./MainTodo";
 
 
@@ -44,7 +44,7 @@ interface TodoBodyProps extends ITodoPrpsGenral {
 
 const TodoBody = ({ todoContaintArr, setModalVisiable, updateTodo, deleteOneTodo, upTodo, downTodo, readyForAllDelete, removeReadyForAllDelete, allDeleteTodo, makeFavirote, makeUnFavirote }: TodoBodyProps) => {
 
-    const [allDeleteBtn, setAllDeleteBtn] = useState(false)
+    const [allDeleteBtn, setAllDeleteBtn] = useState<boolean>(false)
 
     const theme = useContext(ThemeContext)
 
@@ -55,7 +55,7 @@ const TodoBody = ({ todoContaintArr, setModalVisiable, updateTodo, deleteOneTodo
     return (
         <>
             <div className={`w-full md:w-1/3 h-900 border-4 p-2 pb-12 rounded-2xl overflow-hidden ${!theme ? "border-sky-300 " : " border-violet-400"} relative ${!theme ? "bg-white" : " bg-black"} `}  >
- 
+
                 <Navbar />
 
                 <div className='text-center my-4 h-full  overflow-y-auto overflow-x-hidden relative scroll-mx-3.5' id="todo_main_holder">
@@ -76,8 +76,8 @@ const TodoBody = ({ todoContaintArr, setModalVisiable, updateTodo, deleteOneTodo
 
                                 <div className=" animate__animated animate__fadeInUp">
 
-                                <h1 className=" text-xl w-fit">Start Writing <span className={`${!theme ? "text-sky-500 " : " text-violet-500 "} text-2xl hover:text-sky-600 hover:scale-110 transition-all`}>TODOs</span></h1>
-                                <h5 className=" text-sm">By clicking <span className={` ${!theme ? "text-sky-500 " : " text-violet-500 "} text-lg hover:text-sky-600 hover:scale-110 transition-all `}>plus</span> button </h5>
+                                    <h1 className=" text-xl w-fit">Start Writing <span className={`${!theme ? "text-sky-500 " : " text-violet-500 "} text-2xl hover:text-sky-600 hover:scale-110 transition-all`}>TODOs</span></h1>
+                                    <h5 className=" text-sm">By clicking <span className={` ${!theme ? "text-sky-500 " : " text-violet-500 "} text-lg hover:text-sky-600 hover:scale-110 transition-all `}>plus</span> button </h5>
                                 </div>
 
 
@@ -103,16 +103,15 @@ const TodoBody = ({ todoContaintArr, setModalVisiable, updateTodo, deleteOneTodo
                             <div className={`flex flex-wrap justify-center sm:flex-row-reverse ${todoContaintArr.length > 5 ? " mt-24 " : " mt-8 "} `}>
 
                                 {
-                                    (allDeleteBtn) && <button className=" animate__animated animate__rubberBand mx-1 border mb-2 rounded px-2 font-bold bg-red-400 hover:bg-red-700 hover:text-white transition-all" onClick={() => { allDeleteTodo(); setAllDeleteBtn(!allDeleteBtn) }}>All Delete</button>
+                                    (allDeleteBtn || todoContaintArr[todoContaintArr.length - 1].isDeletable) && <button className=" animate__animated animate__rubberBand mx-1 border mb-2 rounded px-2 font-bold bg-red-400 hover:bg-red-700 hover:text-white transition-all" onClick={() => { allDeleteTodo(); setAllDeleteBtn(!allDeleteBtn) }}>All Delete</button>
                                 }
+
+                                {/* Now below and above btn have two dependancy 1st is allDeleteBtn allDeleteBtn and 2nd one is isdelete value of last element of todo. */}
 
                                 <button
                                     className=" animate__animated animate__rubberBand mx-1 mb-2  border rounded px-2 bg-red-200 hover:bg-red-400 transition-all"
-
-                                    id="all_clear_btn"
-
-                                    onClick={() => { setAllDeleteBtn(!allDeleteBtn); allDeleteBtn ? removeReadyForAllDelete() : readyForAllDelete() }}
-                                >{(allDeleteBtn) ? "Remove All Delete" : "Click to All Delete"}</button>
+                                    onClick={() => { setAllDeleteBtn(!allDeleteBtn); (allDeleteBtn || todoContaintArr[todoContaintArr.length - 1]?.isDeletable) ? removeReadyForAllDelete() : readyForAllDelete() }}
+                                >{(allDeleteBtn || todoContaintArr[todoContaintArr.length - 1].isDeletable) ? "Remove All Delete" : "Click to All Delete"}</button>
 
                             </div>
 
