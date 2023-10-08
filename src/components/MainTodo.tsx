@@ -72,6 +72,15 @@ const MainTodo = () => {
     // setTodoArr([...todoArr, { ...obj, id: todoArr.length + 1 , isDeletable: false, isFav: false }])
     setTodoArr([...todoArr, { ...obj, id: uuidv4(), isDeletable: false, isFav: false }])
 
+
+    // // // SOME DOM Things  for scrolling main todo holder div-->
+
+    let todoAreaBox = document.querySelector("#todo_main_holder")
+    if (todoAreaBox) {
+      todoAreaBox.scrollTop = todoAreaBox.scrollHeight
+    }
+
+
   }
 
   function updateTodo(obj: TInputOfTodo) {
@@ -188,6 +197,16 @@ const MainTodo = () => {
 
     setTodoArr(arr)   // // // Now set the arr.
 
+
+
+    // // // SOME DOM Things  for scrolling main todo holder div-->
+
+    let todoAreaBox = document.querySelector("#todo_main_holder")
+    if (todoAreaBox) {
+      todoAreaBox.scrollTop = 0
+    }
+
+
   }
 
   function makeUnFavirote(obj: TInputOfTodo) {
@@ -221,7 +240,7 @@ const MainTodo = () => {
     // // // load theme value fro localstorage --->
     let getDarkThemeData = localStorage.getItem("todo_dark_theme")
 
-    if(getDarkThemeData){
+    if (getDarkThemeData) {
       setThemeMode(JSON.parse(getDarkThemeData))
     }
 
@@ -253,8 +272,8 @@ const MainTodo = () => {
 
           <button
             className={` animate__animated animate__backInUp animate__slow absolute top-2 right-2 px-2 ${!themeMode ? "bg-sky-500 " : " bg-violet-500 "} border border-black rounded text-white font-bold z-30 `}
-            onClick={() => { setThemeMode(!themeMode); localStorage.setItem("todo_dark_theme" , JSON.stringify(!themeMode)) }}
-          >{!themeMode ? <i className="ri-contrast-2-line"></i>: <i className="ri-sun-line"></i>}</button>
+            onClick={() => { setThemeMode(!themeMode); localStorage.setItem("todo_dark_theme", JSON.stringify(!themeMode)) }}
+          >{!themeMode ? <i className="ri-contrast-2-line"></i> : <i className="ri-sun-line"></i>}</button>
 
           <ModalForInpt
             modalVisiable={modalVisiable}

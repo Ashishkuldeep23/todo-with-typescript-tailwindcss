@@ -58,7 +58,7 @@ const TodoBody = ({ todoContaintArr, setModalVisiable, updateTodo, deleteOneTodo
  
                 <Navbar />
 
-                <div className='text-center my-4 h-full  overflow-y-auto overflow-x-hidden relative'>
+                <div className='text-center my-4 h-full  overflow-y-auto overflow-x-hidden relative scroll-mx-3.5' id="todo_main_holder">
                     {
 
                         (todoContaintArr && todoContaintArr.length > 0)
@@ -100,14 +100,17 @@ const TodoBody = ({ todoContaintArr, setModalVisiable, updateTodo, deleteOneTodo
 
                             ?
 
-                            <div className="flex flex-wrap justify-center sm:flex-row-reverse">
+                            <div className={`flex flex-wrap justify-center sm:flex-row-reverse ${todoContaintArr.length > 5 ? " mt-24 " : " mt-8 "} `}>
 
                                 {
-                                    (allDeleteBtn) && <button className="mx-1 border mb-2 rounded px-2 font-bold bg-red-400 hover:bg-red-700 hover:text-white transition-all" onClick={() => { allDeleteTodo(); setAllDeleteBtn(!allDeleteBtn) }}>All Delete</button>
+                                    (allDeleteBtn) && <button className=" animate__animated animate__rubberBand mx-1 border mb-2 rounded px-2 font-bold bg-red-400 hover:bg-red-700 hover:text-white transition-all" onClick={() => { allDeleteTodo(); setAllDeleteBtn(!allDeleteBtn) }}>All Delete</button>
                                 }
 
                                 <button
-                                    className=" animate__animated animate__rubberBand mx-1 mb-2 border rounded px-2 bg-red-200 hover:bg-red-400 transition-all"
+                                    className=" animate__animated animate__rubberBand mx-1 mb-2  border rounded px-2 bg-red-200 hover:bg-red-400 transition-all"
+
+                                    id="all_clear_btn"
+
                                     onClick={() => { setAllDeleteBtn(!allDeleteBtn); allDeleteBtn ? removeReadyForAllDelete() : readyForAllDelete() }}
                                 >{(allDeleteBtn) ? "Remove All Delete" : "Click to All Delete"}</button>
 

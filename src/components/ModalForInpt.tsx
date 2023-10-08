@@ -1,4 +1,4 @@
-import React , {useContext} from 'react'
+import React , {useContext, useEffect , useRef} from 'react'
 import { TInputOfTodo } from './MainTodo';
 import ThemeContext from './ThemeContext';
 
@@ -19,7 +19,11 @@ type TModalProps = {
 
 const ModalForInpt = ({ setModalVisiable, modalVisiable, addNewTodo, updatingTodo, input, setInput, actualToDoUpadateFunction }: TModalProps) => {
 
-  const theme =  useContext(ThemeContext);
+  const theme =  useContext<boolean>(ThemeContext);
+
+  const inputRef = useRef<HTMLInputElement>(null)     
+  // // // So if you using useRef with input then we need to decide a generic for that , that is HTMLInputElement type like above , otherwise it'll give you error in focus()
+
 
   // const [modalVisiable , setModalVisiable] = useState<boolean>(false)
 
@@ -38,12 +42,26 @@ const ModalForInpt = ({ setModalVisiable, modalVisiable, addNewTodo, updatingTod
     e.preventDefault()
     e.stopPropagation()
 
+
+      // console.log(``)
+
+      // // // Two thing todo 1) focus on textArea if press enter in input , 2) Call clickHandler if Enter press on textArea.
+
+      // // 2nd => Call clickHandler if Enter press on textArea.
+      if(e.target.name === "content"  && e.target.value === `${input.content}\n`){
+
+        // // // `${input.content}\n` by this way we  can read enter btn in textArea of TS
+        handleClick(e)  // // // Calling clickhandler fn and also changes type of e in click handler.
+      }
+
+
+
     setInput({ ...input, [e.target.name]: e.target.value })
   }
 
 
   // MouseEvent<HTMLButtonElement, MouseEvent>
-  function handleClick(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
+  function handleClick(e: React.MouseEvent<HTMLButtonElement, MouseEvent> | Event) {
     e.preventDefault()
     e.stopPropagation()
 
@@ -68,6 +86,20 @@ const ModalForInpt = ({ setModalVisiable, modalVisiable, addNewTodo, updatingTod
   }
 
 
+  useEffect( ()=>{
+
+    // // // first time focus on input --->
+
+    if(modalVisiable){
+      inputRef?.current?.focus()
+    }
+    else{
+      // // // This else part is very use full , it cleans input and make it empty (BUG fixed)
+      setInput({ id: "", heading: "", content: "", isFav: false })
+    }
+
+  } , [modalVisiable] )
+
 
 
   return (
@@ -88,6 +120,7 @@ const ModalForInpt = ({ setModalVisiable, modalVisiable, addNewTodo, updatingTod
         >TODO Heading ⬇️</label>
 
         <input
+         ref={inputRef}
           className='rounded focus:bg-green-200'
           type="text" id='heading' name="heading"
           onChange={onChangeHandler}

@@ -24,6 +24,7 @@
 *::selection{
     color: aquamarine;
     background-color: darkslategrey;
+    scroll-behavior: smooth !important;
 }
 
 
@@ -35,4 +36,8 @@ html, body{
 
 strong{
     color: red;
+}
+
+#todo_main_holder{
+    scroll-behavior: smooth !important;
 }
