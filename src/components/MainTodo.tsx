@@ -110,7 +110,13 @@ const MainTodo = () => {
 
     // alert("cl")
 
-    setTodoArr(todoArr.filter((el: TInputOfTodo) => { return el.id !== obj.id }))
+      let newArrAfterFilter = todoArr.filter((el: TInputOfTodo) => { return el.id !== obj.id })
+      setTodoArr(newArrAfterFilter)
+
+      // // // Set new filtered arr in localstorage in one delete.
+      localStorage.setItem("todoData2023", JSON.stringify(newArrAfterFilter))
+    
+
 
     // upadateIDS(obj.id)
   }
@@ -226,13 +232,63 @@ const MainTodo = () => {
 
 
 
-  // // // We can use tow useEffect in our project.
+
+
+
+
+
+
+
+
+
+
+
+
+
+  // // // Key down handler Fn
+  // // // Below code written to handle features by keyboard btn pressed.
+
+  let enteredKeyAre: any[] = [];
+
+  const handleKeyDown = (e : any) => {
+
+    enteredKeyAre.push(e.key);
+    // console.log(enteredKeyAre)
+
+    let firstLast = enteredKeyAre[enteredKeyAre.length - 1]
+
+    if (enteredKeyAre.includes("Control") && (firstLast === "b" || firstLast === "B")) {
+      setModalVisiable(true)
+    }
+
+    // // // Clean the arr if it have more then 4 items (first 2 items cleaned everytimes ) --->
+    if (enteredKeyAre.length > 4) {
+      // console.log(enteredKeyAre.length-3)
+      // console.log(enteredKeyAre.length-1)
+      enteredKeyAre = enteredKeyAre.slice(enteredKeyAre.length - 1)
+    }
+
+  }
 
   useEffect(() => {
-    if (todoArr.length !== 0) {
-      localStorage.setItem("todoData2023", JSON.stringify(todoArr))
+
+    window.addEventListener("keydown", handleKeyDown)
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown)
     }
-  }, [todoArr])
+
+  }, [])
+
+
+
+    // // // We can use tow useEffect in our project.
+
+    useEffect(() => {
+      if (todoArr.length > 0) {
+        localStorage.setItem("todoData2023", JSON.stringify(todoArr))
+      }
+    }, [todoArr])
 
 
   useEffect(() => {

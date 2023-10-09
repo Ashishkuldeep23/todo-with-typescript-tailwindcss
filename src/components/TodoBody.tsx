@@ -58,7 +58,7 @@ const TodoBody = ({ todoContaintArr, setModalVisiable, updateTodo, deleteOneTodo
 
                 <Navbar />
 
-                <div className='text-center my-4 h-full  overflow-y-auto overflow-x-hidden relative scroll-mx-3.5' id="todo_main_holder">
+                <div className='text-center mb-4 h-full  overflow-y-auto overflow-x-hidden relative scroll-mx-3.5' id="todo_main_holder">
                     {
 
                         (todoContaintArr && todoContaintArr.length > 0)
@@ -77,7 +77,8 @@ const TodoBody = ({ todoContaintArr, setModalVisiable, updateTodo, deleteOneTodo
                                 <div className=" animate__animated animate__fadeInUp">
 
                                     <h1 className=" text-xl w-fit">Start Writing <span className={`${!theme ? "text-sky-500 " : " text-violet-500 "} text-2xl hover:text-sky-600 hover:scale-110 transition-all`}>TODOs</span></h1>
-                                    <h5 className=" text-sm">By clicking <span className={` ${!theme ? "text-sky-500 " : " text-violet-500 "} text-lg hover:text-sky-600 hover:scale-110 transition-all `}>plus</span> button </h5>
+                                    <h5 className=" text-sm">By clicking <span className={` ${!theme ? "text-sky-500 " : " text-violet-500 "} text-lg hover:text-sky-600 hover:scale-110 transition-all `}>Plus</span> button </h5>
+                                    <h5 className=" text-sm">OR press<span className={` ${!theme ? "text-sky-500 " : " text-violet-500 "} text-lg hover:text-sky-600 hover:scale-110 transition-all `}> CTRL + B </span> from keyboar </h5>
                                 </div>
 
 
