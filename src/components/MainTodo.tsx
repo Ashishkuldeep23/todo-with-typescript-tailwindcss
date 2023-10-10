@@ -110,12 +110,12 @@ const MainTodo = () => {
 
     // alert("cl")
 
-      let newArrAfterFilter = todoArr.filter((el: TInputOfTodo) => { return el.id !== obj.id })
-      setTodoArr(newArrAfterFilter)
+    let newArrAfterFilter = todoArr.filter((el: TInputOfTodo) => { return el.id !== obj.id })
+    setTodoArr(newArrAfterFilter)
 
-      // // // Set new filtered arr in localstorage in one delete.
-      localStorage.setItem("todoData2023", JSON.stringify(newArrAfterFilter))
-    
+    // // // Set new filtered arr in localstorage in one delete.
+    localStorage.setItem("todoData2023", JSON.stringify(newArrAfterFilter))
+
 
 
     // upadateIDS(obj.id)
@@ -250,7 +250,7 @@ const MainTodo = () => {
 
   let enteredKeyAre: any[] = [];
 
-  const handleKeyDown = (e : any) => {
+  const handleKeyDown = (e: any) => {
 
     enteredKeyAre.push(e.key);
     // console.log(enteredKeyAre)
@@ -282,13 +282,13 @@ const MainTodo = () => {
 
 
 
-    // // // We can use tow useEffect in our project.
+  // // // We can use tow useEffect in our project.
 
-    useEffect(() => {
-      if (todoArr.length > 0) {
-        localStorage.setItem("todoData2023", JSON.stringify(todoArr))
-      }
-    }, [todoArr])
+  useEffect(() => {
+    if (todoArr.length > 0) {
+      localStorage.setItem("todoData2023", JSON.stringify(todoArr))
+    }
+  }, [todoArr])
 
 
   useEffect(() => {
@@ -327,10 +327,13 @@ const MainTodo = () => {
         <div className={`w-full min-h-screen p-3  ${themeMode ? "bg-sky-800 " : " bg-violet-200 "} flex justify-center items-center flex-col overflow-hidden `}>
 
 
-          <div className={`animate__animated animate__backInUp animate__slow absolute top-2 right-2 w-10 border border-black h-5 rounded-full flex items-center  z-30 ${!themeMode ? " bg-violet-500 " : " bg-sky-500 "} transition-all `}>
+          <div
+            className={`animate__animated animate__backInUp animate__slow absolute top-2 right-4 w-10 border border-black h-5 rounded-full flex items-center z-30 ${!themeMode ? " bg-violet-500 " : " bg-sky-500 "} transition-all `}
+            onClick={() => { setThemeMode(!themeMode); localStorage.setItem("todo_dark_theme", JSON.stringify(!themeMode)) }}
+          >
 
             <button
-              className={` ${!themeMode ? " bg-sky-500 ms-0 me-auto " : " bg-violet-500  me-0 ms-auto"} px-1 border border-black rounded-full text-white font-bold z-30 transition-all`}
+              className={` ${!themeMode ? " bg-sky-500 ms-0 me-auto -translate-x-2 " : " bg-violet-500  me-0 ms-auto translate-x-2 "} px-1 border border-black rounded-full text-white font-bold z-30  transition-all`}
               onClick={() => { setThemeMode(!themeMode); localStorage.setItem("todo_dark_theme", JSON.stringify(!themeMode)) }}
             >{!themeMode ? <i className="ri-contrast-2-line  transition-all"></i> : <i className="ri-sun-line"></i>}</button>
           </div>
@@ -359,7 +362,7 @@ const MainTodo = () => {
           ></TodoBody>
 
         </div>
-        <span className=' font-mono fixed -bottom-2 right-1 text-slate-500 z-50 hover:bottom-0 transition-all'>By: Ashish Kuldeep</span>
+        <span className=' font-mono fixed -bottom-2 right-1 text-slate-500 z-50 hover:bottom-0 transition-all'><a href="https://ashish-kuldeep-portfolio.vercel.app/" target='_blank'>By: Ashish Kuldeep</a></span>
 
       </ThemeContext.Provider>
     </>
